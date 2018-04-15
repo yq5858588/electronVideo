@@ -11,6 +11,7 @@
     </script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
     <style>
         html, body {
             height: 100%;
@@ -62,7 +63,7 @@
 
         #center {
             height: 100%;
-            width: calc(100% - 150px);
+            width: calc(100% - 0px);
             background-color: #000
         }
     </style>
@@ -78,66 +79,64 @@
     </script>
 </head>
 
-<div id="top">
+<div id="top" style="-webkit-app-region:drag" style="position: relative;">
     <ul id="myTab" class="nav nav-tabs">
-        <li class="active">
+        <li class="active" style="-webkit-app-region:no-drag">
             <a href="#home" data-toggle="tab">播放器</a>
         </li>
-        <li><a href="#shipin" data-toggle="tab">视频</a></li>
-        <li><a href="#youku" data-toggle="tab">优酷</a></li>
-        <li class="dropdown">
+        <li style="-webkit-app-region:no-drag" onclick="getDatas()"><a href="#shipin" data-toggle="tab">视频</a></li>
+        <!-- <li style="-webkit-app-region:no-drag"><a href="#youku" data-toggle="tab">优酷</a></li>
+        <li class="dropdown" style="-webkit-app-region:no-drag">
             <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
                 <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
                 <li><a href="#weixin" tabindex="-1" data-toggle="tab">weixin</a></li>
             </ul>
-        </li>
+        </li> -->
     </ul>
+    <span style="position:fixed;top:15px;right:20px;-webkit-app-region:no-drag">
+        <img src="../res/close.png" width="30" height="30" alt="" onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
+    </span>
 </div>
 <div id="main">
     <div id="center">
         <div id="myTabContent" class="tab-content" style="height:calc(100% - 0px);border:0px solid red">
-            <div class="tab-pane fade  in active" id="home" style="height:100%;border:0px solid red">
-                <video width="100%" height="100%" controls  autoplay="autoplay" id="videoCon" style="-webkit-app-region:drag">
-                    <source src="http://xiazai.jingpingxiazai.com/20180414/DkSJiM5M/mp4/DkSJiM5M.mp4" type="video/mp4">
-                </video>
+            <div class="tab-pane fade  in active" id="home" style="height:100%;border:0px solid red;position: relative;">
+                <video width="100%" height="100%" controls  autoplay="autoplay" id="videoCon">
+                    <source src="http1://xiazai.jingpingxiazai.com/20180414/DkSJiM5M/mp4/DkSJiM5M.mp4" type="video/mp4">
+                    </video>
+                <h4 id="videoMsg" style="display:none;position: relative;top:-50%;left:50%">加载中...</h4>
+                <div id="videoMsg" style="position:fixed;top:70px;left:10px;width:98%;height:80%;background:#ddd;opacity:0;-webkit-app-region:drag"></div>
             </div>
             <div class="tab-pane fade" id="shipin" style="height:100%;border:0px solid red">
-                <webview id="foohome" src="http://www.jingpinzy.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/"
-                nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                
             </div>
             <div class="tab-pane fade" id="youku" style="height:100%;border:0px solid red">
                 <webview id="fooyoukuWeb" src="http://www.youku.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/"
                     nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
             </div>
             <div class="tab-pane fade" id="jmeter">
-                <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+                <webview id="foohome" src="http://www.jingpinzy.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/"
+                nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
             </div>
             <div class="tab-pane fade" id="weixin" style="height:100%;">
                 <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border=0 useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0"></webview>
             </div>
         </div>
     </div>
-    <div id="right">
+    <!-- <div id="right">
         <h4 id="window-haoyou">播放列表</h4>
         <div id="window-haoyou-reply">msg</div>
         <ul>
             <li></li>
             <li></li>
         </ul>
-    </div>
+    </div> -->
 </div>
 </body>
+<script src="getData.js"></script>
 <script>
-    $('#videoCon').on('waiting', function() {
-        console.log('onwaiting执行成功!');
-    });
-    $('#videoCon').onprogress=alert("视频正在加载中");
-
-
-
-
-    var webview = document.getElementById("foohome");
+    /*var webview = document.getElementById("foohome");
     webview.addEventListener("did-start-loading", () => {
         webview.openDevTools({ mode: 'detach' });
     });
@@ -151,6 +150,6 @@
     });
     webview.addEventListener('console-message', e => {
         console.log('webview: ' + e.message);
-    });
+    });*/
 </script>
 </html>

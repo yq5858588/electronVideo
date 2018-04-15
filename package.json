@@ -43,6 +43,7 @@
     "dependencies": {
         "ejs": "^2.5.8",
         "getmac": "^1.4.1",
-        "mysql": "^2.15.0"
+        "mysql": "^2.15.0",
+        "request": "^2.85.0"
     }
 }
