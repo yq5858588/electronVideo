@@ -1,0 +1,48 @@
+{
+    "name": "videoonline",
+    "version": "2018.04.12",
+    "description": "一个在线视频软件",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "electron .",
+        "packager": "electron-packager . appName --platform=win32 --arch=x64 --electron-version=1.8.2 --out=out --overwrite",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
+    },
+    "repository": "https://github.com/electron/electron-quick-start",
+    "keywords": [
+        "Electron",
+        "quick",
+        "start",
+        "tutorial",
+        "demo"
+    ],
+    "build": {
+        "appId": "com.yq.video",
+        "copyright": "杨庆",
+        "productName": "在线视频软件",
+        "dmg": {
+            "background": "res/background.png",
+            "window": {
+                "x": 100,
+                "y": 100,
+                "width": 500,
+                "height": 300
+            }
+        },
+        "win": {
+            "icon": "res/icon.ico"
+        }
+    },
+    "author": "杨庆",
+    "license": "CC0-1.0",
+    "devDependencies": {
+        "electron": "~1.8.2",
+        "mongodb": "^3.0.6"
+    },
+    "dependencies": {
+        "ejs": "^2.5.8",
+        "getmac": "^1.4.1",
+        "mysql": "^2.15.0"
+    }
+}

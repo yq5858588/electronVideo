@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>在线视频软件</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=9" />
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="max-age=135000" />
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        if (typeof module === 'object') { window.jQuery = window.$ = module.exports; };
+    </script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #myTab {
+            max-height: 60px;
+            min-height: 60px;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .nav-tabs>li {
+            /* /background: black; */
+            line-height: 60px;
+        }
+
+        .nav-tabs>li>a {
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        .nav-tabs>li.active>a:hover {
+            color: #555 !important;
+            cursor: default;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+
+        #main {
+            height: calc(100% - 60px);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden
+        }
+
+        #right {
+            height: 100%;
+            max-width: 150px;
+            min-width: 150px;
+            color: #aaa;
+            background-color: #666
+        }
+
+        #center {
+            height: 100%;
+            width: calc(100% - 150px);
+            background-color: #000
+        }
+    </style>
+    <script type="text/javascript">
+        // var dbmysql = require('./utils/mysqleasy.js');
+        var type = '';
+        var address = '';
+        var user = '';
+        var pass = '';
+        var port = '';
+        var database = '';
+        // require('./renderer.js');
+    </script>
+</head>
+
+<div id="top">
+    <ul id="myTab" class="nav nav-tabs">
+        <li class="active">
+            <a href="#home" data-toggle="tab">播放器</a>
+        </li>
+        <li><a href="#shipin" data-toggle="tab">视频</a></li>
+        <li><a href="#youku" data-toggle="tab">优酷</a></li>
+        <li class="dropdown">
+            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
+                <li><a href="#weixin" tabindex="-1" data-toggle="tab">weixin</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+<div id="main">
+    <div id="center">
+        <div id="myTabContent" class="tab-content" style="height:calc(100% - 0px);border:0px solid red">
+            <div class="tab-pane fade  in active" id="home" style="height:100%;border:0px solid red">
+                <video width="100%" height="100%" controls  autoplay="autoplay" id="videoCon" style="-webkit-app-region:drag">
+                    <source src="http://xiazai.jingpingxiazai.com/20180414/DkSJiM5M/mp4/DkSJiM5M.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="tab-pane fade" id="shipin" style="height:100%;border:0px solid red">
+                <webview id="foohome" src="http://www.jingpinzy.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/"
+                nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            </div>
+            <div class="tab-pane fade" id="youku" style="height:100%;border:0px solid red">
+                <webview id="fooyoukuWeb" src="http://www.youku.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/"
+                    nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            </div>
+            <div class="tab-pane fade" id="jmeter">
+                <p>jMeter 是一款开源的测试软件。它是 100% 纯 Java 应用程序，用于负载和性能测试。</p>
+            </div>
+            <div class="tab-pane fade" id="weixin" style="height:100%;">
+                <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border=0 useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0"></webview>
+            </div>
+        </div>
+    </div>
+    <div id="right">
+        <h4 id="window-haoyou">播放列表</h4>
+        <div id="window-haoyou-reply">msg</div>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+</body>
+<script>
+    $('#videoCon').on('waiting', function() {
+        console.log('onwaiting执行成功!');
+    });
+    $('#videoCon').onprogress=alert("视频正在加载中");
+
+
+
+
+    var webview = document.getElementById("foohome");
+    webview.addEventListener("did-start-loading", () => {
+        webview.openDevTools({ mode: 'detach' });
+    });
+    webview.addEventListener('dom-ready', () => {
+        console.log("URL地址为：" + webview.getURL());
+        const webContents = webview.getWebContents();
+        webContents.on('new-window', (event, url) => {
+            event.preventDefault();
+            webview.loadURL(url);
+        });
+    });
+    webview.addEventListener('console-message', e => {
+        console.log('webview: ' + e.message);
+    });
+</script>
+</html>
