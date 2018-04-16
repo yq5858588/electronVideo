@@ -1,7 +1,7 @@
 {
     "name": "videoonline",
     "version": "2018.04.12",
-    "description": "一个在线视频软件",
+    "description": "超人影视",
     "main": "src/main.js",
     "scripts": {
         "start": "electron .",
@@ -20,7 +20,7 @@
     "build": {
         "appId": "com.yq.video",
         "copyright": "杨庆",
-        "productName": "在线视频软件",
+        "productName": "超人影视",
         "dmg": {
             "background": "res/background.png",
             "window": {
@@ -41,6 +41,7 @@
         "mongodb": "^3.0.6"
     },
     "dependencies": {
+        "cheerio": "^1.0.0-rc.2",
         "ejs": "^2.5.8",
         "getmac": "^1.4.1",
         "mysql": "^2.15.0",

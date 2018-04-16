@@ -28,9 +28,9 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         transparent:true ,
         frame: false,
-        width: 1200,
+        width: 983,
         fullscreenable: true,
-        height: 800,
+        height: 627,
         icon: path.join(__dirname, '../res/icon.ico')
     })
 
@@ -88,7 +88,7 @@ function createWindow() {
     })
     // mainWindow.setTitle(macAddress);
     // Open the DevTools.
-    mainWindow.webContents.openDevTools()
+    // mainWindow.webContents.openDevTools()
     //注册打开控制台的快捷键
     globalShortcut.register('F6', function() {
         let win = BrowserWindow.getFocusedWindow();
