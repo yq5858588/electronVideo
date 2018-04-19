@@ -88,7 +88,7 @@ function createWindow() {
     })
     // mainWindow.setTitle(macAddress);
     // Open the DevTools.
-    // mainWindow.webContents.openDevTools()
+    mainWindow.webContents.openDevTools()
     //注册打开控制台的快捷键
     globalShortcut.register('F6', function() {
         let win = BrowserWindow.getFocusedWindow();
@@ -110,6 +110,7 @@ function createWindow() {
     });
     mainWindow.setMenu(null);
     // mainWindow.maximize();
+
     mainWindow.on('close', event => {
         /*let num = dialog.showMessageBox({
             title: '确认退出系统吗？',
