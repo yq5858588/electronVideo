@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        if (typeof module === 'object') { window.jQuery = window.$ = module.exports; };
+    </script>
+    <title>Document</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: #eee;
+        }
+        .con {
+            margin:60px auto;
+            padding: 0 auto;
+            border: 0px solid red;
+        }
+
+        .con>.item {
+            width: 600px;
+            margin: 3px auto;
+            border-bottom: 1px solid red;
+            border-collapse: collapse
+        }
+
+        .item_row {
+            line-height: 30px;
+            border-bottom: 1px solid red;
+            cursor: pointer;
+        }
+
+        .con>.item>.title {
+            color: #000;
+            font-size: 15px;
+            margin: 3px;
+        }
+
+        .con>.item>.yanyuan {
+            color: #888;
+            font-size: 15px;
+            margin: 3px;
+        }
+
+        .con>.item>.type {
+            color: #991;
+            font-size: 15px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    {{include 'admin/index/header.html'}}
+<div class="con">
+    <table class="item">
+        {{each list}}
+        <tr class="item_row">
+            <td class="title"><a href="/admin/index/info?url={{@$value.url}}">{{$value.title}}</a></td>
+            <td class="type">{{$value.type}}</td>
+            <td class="title">{{$value.time}}</td>
+        </tr>
+        {{/each}}
+    </table>
+</div>
+</body>
+</html>

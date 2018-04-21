@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        if (typeof module === 'object') { window.jQuery = window.$ = module.exports; };
+    </script>
+    <title>Document</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            background: #eee;
+        }
+
+        .con {
+            margin: 60px auto;
+            padding: 0 auto;
+            border: 0px solid red;
+        }
+
+        .con>.item {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: center;
+            align-items: center;
+            width: 600px;
+            margin: 3px auto;
+            border-bottom: 1px solid red;
+            border-collapse: collapse
+        }
+
+        .item_row {
+            line-height: 40px;
+            border-bottom: 1px solid red;
+            cursor: pointer;
+        }
+
+        .con>.item>.title {
+            color: #000;
+            font-size: 15px;
+            margin: 3px;
+        }
+
+        .con>.item>.yanyuan {
+            color: #888;
+            font-size: 15px;
+            margin: 3px;
+        }
+
+        .con>.item>.type {
+            color: #991;
+            font-size: 15px;
+            margin: 3px;
+        }
+        .info>div{
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 14px;
+            margin: 10px 10px;
+            
+        }
+        .play{
+            margin: 10px auto;
+            background:#000;
+            border-radius: 10px;
+            color:#fff;
+            font-size: 20px;
+            width: 150px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center
+        }
+    </style>
+</head>
+<body>
+{{include 'admin/index/header.html'}}
+<div class="con">
+    <div class="item">
+        <div><img src="{{info.img}}" width="200" height="250" alt=""></div>
+        <div class="info">
+            <div class="title">{{info.title}}</div>
+            <div class="subtitle">{{info.subtitle}}</div>
+            <div class="remark">{{info.remark}}</div>
+            <div class="yanyuan">{{info.yanyuan}}</div>
+            <div class="daoyan">{{info.daoyan}}</div>
+            <div class="type">{{info.type}}</div>
+            <div class="time">{{info.time}}</div>
+        </div>
+    </div>
+    <div class="play" onclick="play('{{info.urladdress}}')">点击播放</div>
+    
+</div>
+</body>
+<script>
+    function play(typeid) {
+        console.log(typeid);
+    }
+</script>
+</html>

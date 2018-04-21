@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>admin/user/edit</title>
+</head>
+<body>
+<form action="/doEdit" method="POST">
+    <input type="hidden" value="{{@list._id}}">
+    <div> 用户名： <input type="text" name="username" value="{{list.username}}"></div>
+    <div> 用户名： <input type="text" name="username" value="{{list.name}}"></div>
+    <div>年龄：<input type="text" name="age" value="{{list.age}}"></div>
+    <div>性别:<input type="text" name="sex" value="{{list.sex}}"></div>
+    <input type="submit" value="提交">
+</form>
+</body>
+</html>

@@ -1,7 +1,37 @@
 var cheerio = require("cheerio");
 var urlPar = require("url");
-var datalist = [];
 
+class Html {
+
+    static getInstance() { /*1、单例  多次实例化实例不共享的问题*/
+        if (!Html.instance) {
+            Html.instance = new Html();
+        }
+        return Html.instance;
+    }
+    getHtml(url) {
+        return new Promise((resolve, reject) => {
+            var request = require('request');
+            var options = {
+                url: url,
+                headers: {
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0'
+                }
+            };
+            request(options, (error, response, body) => {
+                if (error) {
+                    reject(err);
+                    return;
+                }
+                resolve(body);
+            })
+        })
+
+    }
+}
+
+module.exports = Html.getInstance();
+/*
 function getDatas() {
     var html = getHtml('http://www.jingpinzy.com/', (error, response, body) => {
         // console.log(error);
@@ -49,7 +79,7 @@ function getDataInfo(url) {
 
             var info = {};
             var img = tempTr(".videoPic>img").attr("src");
-            $("#infoimg").src=img;
+            $("#infoimg").src = img;
             var title = tempTr(".videoDetail>li:nth-child(1)").text();
             $("#infotitle").text(title);
 
@@ -61,23 +91,22 @@ function getDataInfo(url) {
 
             var infoyanyuan = tempTr(".videoDetail>li:nth-child(4)").text();
             $("#infoyanyuan").text(infoyanyuan);
-            
+
             var infodaoyan = tempTr(".videoDetail>li:nth-child(5)").text();
             $("#infodaoyan").text(infodaoyan);
-            
+
             var infotype = tempTr(".videoDetail>li:nth-child(6)").text();
             $("#infotype").text(infotype);
-            
+
             var infotime = tempTr(".videoDetail>li:nth-child(9)>div").text();
             $("#infotime").text(infotime);
 
-            
             var urladdress = tempTr(".movievod>ul>li:nth-child(2)").text();
 
-            $("#infobutton").bind("click",function(){
+            $("#infobutton").bind("click", function() {
                 // playVideo(urladdress.split("$")[1]);
                 console.log(urladdress.split("$")[1]);
-              });
+            });
         };
     });
 }
@@ -93,4 +122,4 @@ function getHtml(url, callback) {
     request(options, (error, response, body) => {
         callback(error, response, body);
     })
-}
+}*/

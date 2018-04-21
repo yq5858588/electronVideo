@@ -103,7 +103,7 @@ function createWindow() {
         }
     });
     //快捷键
-    globalShortcut.register('F5', function() {
+    globalShortcut.register('ctrl+shift+p', function() {
         let win = BrowserWindow.getFocusedWindow();
         if(!win) return;
         win.reload();

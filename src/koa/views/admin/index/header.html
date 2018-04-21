@@ -1,0 +1,49 @@
+<style>
+    #nav {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 50px;
+        background: #ddd;
+    }
+
+    #nav>li {
+        padding: 3px;
+        text-align: center;
+        width: 60px;
+        list-style: none
+    }
+
+    #nav>li:hover {
+        height: 40px;
+        border-radius: 10px;
+        background: #333;
+        color: #fff;
+    }
+</style>
+<div style="position:fixed;top:0px;left:20px;z-index: 999;height: 60px;line-height: 60px">
+    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(-1);">后退</span>
+    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(1);">前进</span>
+</div>
+<ul id="nav">
+    <li onclick="showInfo(0)">首页</li>
+    <li onclick="showInfo(0)">动作片</li>
+    <li onclick="showInfo(0)">喜剧片</li>
+    <li onclick="showInfo(0)">爱情片</li>
+    <li onclick="showInfo(0)">科幻片</li>
+    <li onclick="showInfo(0)">恐怖片</li>
+    <li onclick="showInfo(0)">剧情片</li>
+    <li onclick="showInfo(0)">战争片</li>
+    <li onclick="showInfo(0)">动画片</li>
+</ul>
+<script>
+    function showInfo(typeid) {
+        window.location.href = "/admin/index?typeid=" + typeid;
+    }
+</script>

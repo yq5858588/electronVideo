@@ -85,9 +85,9 @@
         <li class="active" style="-webkit-app-region:no-drag">
             <a href="#home" data-toggle="tab">播放器</a>
         </li>
-        <li style="-webkit-app-region:no-drag"><a href="#shipin" data-toggle="tab">视频</a></li>
-        <!-- <li style="-webkit-app-region:no-drag"><a href="#youku" data-toggle="tab">优酷</a></li>
-        <li class="dropdown" style="-webkit-app-region:no-drag">
+        <li style="-webkit-app-region:no-drag"><a href="#jingpin" data-toggle="tab">精品电影</a></li>
+        <li style="-webkit-app-region:no-drag"><a href="#yingshi" data-toggle="tab">影视大全</a></li>
+        <!--<li class="dropdown" style="-webkit-app-region:no-drag">
             <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
                 <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
@@ -109,13 +109,13 @@
                 <h4 id="videoMsg" style="display:none;position: relative;top:-50%;left:50%">加载中...</h4>
                 <div id="videoMsg" style="position:fixed;top:70px;left:10px;width:98%;height:80%;background:#ddd;opacity:0;-webkit-app-region:drag"></div>
             </div>
-            <div class="tab-pane fade" id="shipin" style="height:100%;border:0px solid red">
-                <webview id="fooshipin" src="data.html" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com"
-                    nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            <div class="tab-pane fade" id="jingpin" style="height:100%;border:0px solid red;">
+                <webview id="fooshipin" src="http://127.0.0.1:3000/admin/index?typeid=0" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;"
+                    httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on" ></webview>
             </div>
-            <div class="tab-pane fade" id="youku" style="height:100%;border:0px solid red">
-                <webview id="fooyoukuWeb" src="http://www.youku.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/"
-                    nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            <div class="tab-pane fade" id="yingshi" style="height:100%;border:0px solid red">
+                    <webview id="fooshipin" src="http://127.0.0.1:3000/admin/yingshi?typeid=0" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;"
+                    httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on" ></webview>
             </div>
             <div class="tab-pane fade" id="jmeter">
                 <webview id="foohome" src="http://www.jingpinzy.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/"
@@ -137,10 +137,10 @@
 </div>
 </body>
 <script>
-    require('./http/index.js');
+    require('./koa/app.js');
     var webview = document.getElementById("fooshipin");
     webview.addEventListener("did-start-loading", () => {
-        // webview.openDevTools({ mode: 'detach' });
+        webview.openDevTools({ mode: 'detach' });
     });
     /*var webview = document.getElementById("foohome");
     webview.addEventListener('dom-ready', () => {
@@ -157,8 +157,8 @@
 
     webview.addEventListener('console-message', e => {
         console.log('播放地址为: ' + e.message);
-        if(e.message.indexOf(".m3u8")>0)
-        playVideo(e.message);
+        if (e.message.indexOf(".m3u8") > 0)
+            playVideo(e.message);
     });
 
     var video;
