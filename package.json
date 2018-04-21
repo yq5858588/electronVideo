@@ -44,7 +44,7 @@
         "eslint-config-think": "^1.0.0",
         "mongodb": "^3.0.6",
         "node-notifier": "^5.0.2",
-        "nyc": "^7.0.0",
+        "nyc": "^7.0.0"
     },
     "dependencies": {
         "cheerio": "^1.0.0-rc.2",
