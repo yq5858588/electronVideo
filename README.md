@@ -11,6 +11,7 @@ npm install electron-builder -g  //安装打包环境
 electron-builder --version  //查看打包环境版本
 
 electron-builder -w     //打包命令
+electron-builder -mwl     //打包打包所有平台
 
 
 //打包的时候注意icon的大小  必须大于256*256
