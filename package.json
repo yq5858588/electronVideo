@@ -1,11 +1,11 @@
 {
-    "name": "videoonline",
+    "name": "videomusiconline",
     "version": "2018.04.12",
-    "description": "超人影视",
+    "description": "超人影音盒",
     "main": "src/main.js",
     "scripts": {
         "start": "electron .",
-        "packager": "electron-packager . appName --platform=win32 --arch=x64 --electron-version=1.8.2 --out=out --overwrite",
+        "packager": "electron-packager . appName --platform=win32 --arch=x64 --electron-version=2.0.0 --out=out --overwrite",
         "pack": "electron-builder --dir",
         "dist": "electron-builder"
     },
@@ -20,7 +20,7 @@
     "build": {
         "appId": "com.yq.video",
         "copyright": "杨庆",
-        "productName": "超人影视",
+        "productName": "超人影音盒",
         "dmg": {
             "background": "res/background.png",
             "window": {
@@ -37,18 +37,14 @@
     "author": "杨庆",
     "license": "CC0-1.0",
     "devDependencies": {
-        "electron": "~1.8.2",
-        "mongodb": "^3.0.6",
+        "ava": "^0.18.0",
         "babel-cli": "^6.24.1",
         "babel-preset-think-node": "^1.0.0",
-        "node-notifier": "^5.0.2",
-        "think-inspect": "0.0.2",
-        "think-babel": "^1.0.3",
-        "think-watcher": "^3.0.0",
         "eslint": "^4.2.0",
         "eslint-config-think": "^1.0.0",
-        "ava": "^0.18.0",
-        "nyc": "^7.0.0"
+        "mongodb": "^3.0.6",
+        "node-notifier": "^5.0.2",
+        "nyc": "^7.0.0",
     },
     "dependencies": {
         "cheerio": "^1.0.0-rc.2",

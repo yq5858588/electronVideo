@@ -20,7 +20,7 @@ class Html {
             };
             request(options, (error, response, body) => {
                 if (error) {
-                    reject(err);
+                    reject(error);
                     return;
                 }
                 resolve(body);

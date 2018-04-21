@@ -142,6 +142,13 @@ router
 
 app.use(router.routes()); //启动路由
 app.use(router.allowedMethods());
+let appport=RandomNumBoth(3000,65533);
+app.listen(41601);
+console.log("http://127.0.0.1:41601");
 
-app.listen(3000);
-console.log("http://127.0.0.1:3000");
+function RandomNumBoth(Min,Max){
+    var Range = Max - Min;
+    var Rand = Math.random();
+    var num = Min + Math.round(Rand * Range); //四舍五入
+    return num;
+}

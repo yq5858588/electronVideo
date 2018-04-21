@@ -5,9 +5,17 @@ const cheerio = require("cheerio");
 
 router
     .get('/', async (ctx) => {
-        let res = "sdgsdfg";
+        let url="",total,curpage;
+        let typeid=ctx.request.query.typeid;
+        let page=parseInt(ctx.request.query.page)+1;
+        if(typeid==0){
+            url='http://www.jingpinzy.com/?m=vod-index-pg-'+(page)+'.html';
+        }else{
+            http://www.jingpinzy.com/?m=vod-type-id-5-pg-2.html
+            url='http://www.jingpinzy.com/?m=vod-type-id-'+typeid+'-pg-'+(page)+'.html';
+        }
         let datalist = [];
-        let html = await Html.getHtml('http://www.jingpinzy.com/');
+        let html = await Html.getHtml(url);
         var $ = cheerio.load(html);
         $("#data_list>tr").each(function(i, e) {
             var tempTr = cheerio.load(e);
@@ -22,10 +30,13 @@ router
             info.time = (time);
             datalist.push(info);
         });
-
-        // console.log(datalist[0]);
+        total =($(".page_num").text()).match(/共(\d+)条数据/);    
+        // console.log(totaltemp);
         await ctx.render('admin/index/index', {
-            list: datalist
+            list: datalist,
+            total:total[1],
+            curpage:(page-1),
+            typeid:typeid
         });
     })
     .get('/info', async (ctx) => {        

@@ -28,22 +28,29 @@
     }
 </style>
 <div style="position:fixed;top:0px;left:20px;z-index: 999;height: 60px;line-height: 60px">
-    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(-1);">后退</span>
-    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(1);">前进</span>
+    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(-1);$('body').mLoading();$('body').mLoading('hide');">后退</span>
+    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(1);$('body').mLoading();$('body').mLoading('hide');">前进</span>
 </div>
 <ul id="nav">
     <li onclick="showInfo(0)">首页</li>
-    <li onclick="showInfo(0)">动作片</li>
-    <li onclick="showInfo(0)">喜剧片</li>
-    <li onclick="showInfo(0)">爱情片</li>
-    <li onclick="showInfo(0)">科幻片</li>
-    <li onclick="showInfo(0)">恐怖片</li>
-    <li onclick="showInfo(0)">剧情片</li>
-    <li onclick="showInfo(0)">战争片</li>
-    <li onclick="showInfo(0)">动画片</li>
+    <li onclick="showInfo(5)">动作片</li>
+    <li onclick="showInfo(6)">喜剧片</li>
+    <li onclick="showInfo(7)">爱情片</li>
+    <li onclick="showInfo(8)">科幻片</li>
+    <li onclick="showInfo(9)">恐怖片</li>
+    <li onclick="showInfo(10)">剧情片</li>
+    <li onclick="showInfo(11)">战争片</li>
+    <li onclick="showInfo(17)">动画片</li>
 </ul>
+
+<link rel="stylesheet" href="/style.css">
+<script src="/jquery.paginate.js"></script>
 <script>
     function showInfo(typeid) {
-        window.location.href = "/admin/index?typeid=" + typeid;
+        $("body").mLoading();
+        window.location.href = "/admin/index?typeid=" + typeid+"&page=0";
     }
 </script>
+
+<script src="/loadingputong/src/jquery.mloading.js"></script>
+<link rel="stylesheet" href="/loadingputong/src/jquery.mloading.css">

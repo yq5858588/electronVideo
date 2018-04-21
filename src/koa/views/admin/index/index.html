@@ -15,8 +15,9 @@
             padding: 0;
             background: #eee;
         }
+
         .con {
-            margin:60px auto;
+            margin-top: 60px;
             padding: 0 auto;
             border: 0px solid red;
         }
@@ -54,17 +55,39 @@
     </style>
 </head>
 <body>
-    {{include 'admin/index/header.html'}}
+{{include 'admin/index/header.html'}}
 <div class="con">
     <table class="item">
         {{each list}}
         <tr class="item_row">
-            <td class="title"><a href="/admin/index/info?url={{@$value.url}}">{{$value.title}}</a></td>
+            <td class="title"><a href="javascript:$('body').mLoading(); window.location.href='/admin/index/info?url={{@$value.url}}'">{{$value.title}}</a></td>
             <td class="type">{{$value.type}}</td>
             <td class="title">{{$value.time}}</td>
         </tr>
         {{/each}}
     </table>
 </div>
+<div id="pagebox" class="pagination"></div>
 </body>
+<script>
+    var flag=false; 
+    $("#pagebox").pagination({{total}}, {
+        num_edge_entries: 1, //边缘页数
+        num_display_entries: 4, //主体页数
+        items_per_page:50, //每页显示1项
+        current_page:{{curpage}},
+        prev_text: '上页',
+        next_text: '下页',
+        callback:PageCallback
+    });
+    function PageCallback(page_index, jq) {  
+        // console.log(flag)
+        if(flag){
+            $("body").mLoading();
+            window.location.href="/admin/index?typeid={{typeid}}&page="+page_index;
+        }else{
+            flag=true; 
+        }
+    }
+</script>
 </html>
