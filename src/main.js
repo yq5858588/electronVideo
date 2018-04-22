@@ -1,6 +1,6 @@
 const electron = require('electron');
-const { dialog } = require('electron');
-const { shell } = require('electron');
+const {dialog} = require('electron');
+const {shell} = require('electron');
 
 const ipc = electron.ipcMain;
 
@@ -26,7 +26,7 @@ function createWindow() {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        transparent:true ,
+        transparent: true,
         frame: false,
         width: 983,
         fullscreenable: true,
@@ -42,19 +42,19 @@ function createWindow() {
 
     appIcon = new Tray(path.join(__dirname, '../res/icon.ico'));
     var contextMenu = Menu.buildFromTemplate([{
-            label: '最大化',
-            type: 'normal',
-            role: 'close',
-            click: function(item, focusedWindow) {
-                mainWindow.maximize();
-                mainWindow.show();
-            }
-        },
+        label: '最大化',
+        type: 'normal',
+        role: 'close',
+        click: function (item, focusedWindow) {
+            mainWindow.maximize();
+            mainWindow.show();
+        }
+    },
         {
             label: '最小化',
             type: 'normal',
             role: 'minimize',
-            click: function(item, focusedWindow) {
+            click: function (item, focusedWindow) {
                 mainWindow.hide();
             }
         },
@@ -62,16 +62,16 @@ function createWindow() {
             label: '关于',
             type: 'normal',
             checked: true,
-            click: function(item, focusedWindow) {
+            click: function (item, focusedWindow) {
                 shell.openExternal("https://gitee.com/yq5858588")
             }
         },
-        { label: '', type: 'separator' },
+        {label: '', type: 'separator'},
         {
             label: '退出',
             type: 'normal',
             role: 'close',
-            click: function(item, focusedWindow) {
+            click: function (item, focusedWindow) {
                 app.quit();
             }
         }
@@ -79,7 +79,7 @@ function createWindow() {
     appIcon.setToolTip('欢迎使用数据库管理软件');
     appIcon.setContextMenu(contextMenu);
     //单点击 1.主窗口显示隐藏切换 2.清除闪烁
-    appIcon.on("click", function() {
+    appIcon.on("click", function () {
         // if (!!timer) {
         // appIcon.setImage(path.join(appIcon, 'icon.ico'))
         //主窗口显示隐藏切换
@@ -90,7 +90,7 @@ function createWindow() {
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
     //注册打开控制台的快捷键
-    globalShortcut.register('F6', function() {
+    globalShortcut.register('F6', function () {
         let win = BrowserWindow.getFocusedWindow();
         if (win) {
             // win.webContents.print();
@@ -103,9 +103,9 @@ function createWindow() {
         }
     });
     //快捷键
-    globalShortcut.register('ctrl+shift+p', function() {
+    globalShortcut.register('ctrl+shift+p', function () {
         let win = BrowserWindow.getFocusedWindow();
-        if(!win) return;
+        if (!win) return;
         win.reload();
     });
     mainWindow.setMenu(null);
@@ -120,10 +120,11 @@ function createWindow() {
         });
         if (num !== 0) event.preventDefault();*/
     });
-    mainWindow.on('closed', function(event) {
+    mainWindow.on('closed', function (event) {
         mainWindow = null
     })
 }
+
 const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
     // Someone tried to run a second instance, we should focus our window.
     if (mainWindow) {
@@ -137,7 +138,7 @@ if (shouldQuit) {
 }
 app.on('ready', createWindow)
 
-app.on('window-all-closed', function(event) {
+app.on('window-all-closed', function (event) {
     if (appIcon) appIcon.destroy();
     if (process.platform !== 'darwin') {
         app.quit()
@@ -145,24 +146,24 @@ app.on('window-all-closed', function(event) {
 
 })
 
-app.on('activate', function() {
+app.on('activate', function () {
     if (mainWindow === null) {
         createWindow();
     }
 })
 //登录窗口最小化
-ipc.on('window-min', function() {
+ipc.on('window-min', function () {
     mainWindow.minimize();
 })
 //登录窗口最大化
-ipc.on('window-max', function() {
+ipc.on('window-max', function () {
     if (mainWindow.isMaximized()) {
         mainWindow.restore();
     } else {
         mainWindow.maximize();
     }
 })
-ipc.on('window-close', function() {
+ipc.on('window-close', function () {
     mainWindow.close();
 })
 // In this file you can include the rest of your app's specific main process

@@ -8,13 +8,12 @@ const render = require('koa-art-template');
 // const DB = require('./module/mongodb');
 
 //引入子路由
-var admin =require('./routes/admin');
-var api =require('./routes/api');
+var admin = require('./routes/admin');
+var api = require('./routes/api');
 
 
-
-router.use('/admin',admin);
-router.use('/api',api);
+router.use('/admin', admin);
+router.use('/api', api);
 
 const app = new Koa();
 
@@ -68,56 +67,56 @@ router
     .post('/doAdd', async (ctx) => {
         let title = "sdfasdfasd";
         // ctx.body = ctx.request.body.username;
-        let res = await DB.insert('user',ctx.request.body);
+        let res = await DB.insert('user', ctx.request.body);
         console.log(res.result);
-        try{
-            if(res.result.ok){
+        try {
+            if (res.result.ok) {
                 ctx.redirect('/')
             }
-        }catch(err){
+        } catch (err) {
             console.log(err);
             ctx.redirect('/add');
         }
-        
+
     })
     .get('/edit', async (ctx) => {
         let user = "sdfasdfasd";
-        let id=ctx.query.id;
-        let res=await DB.find('user',{'_id':DB.getObjectId(id)});
-        
+        let id = ctx.query.id;
+        let res = await DB.find('user', {'_id': DB.getObjectId(id)});
+
         await ctx.render('edit', {
             list: res[0]
         });
     })
     .post('/doEdit', async (ctx) => {
-        let id=ctx.request.body.id;
-        let username=ctx.request.body.username;
-        let name=ctx.request.body.name;
-        let age=ctx.request.body.age;
-        let sex=ctx.request.body.sex;
+        let id = ctx.request.body.id;
+        let username = ctx.request.body.username;
+        let name = ctx.request.body.name;
+        let age = ctx.request.body.age;
+        let sex = ctx.request.body.sex;
 
-        let res = await DB.update('user',{'_id':DB.getObjectId(id)},{
-            username,name,age,sex
+        let res = await DB.update('user', {'_id': DB.getObjectId(id)}, {
+            username, name, age, sex
         });
         console.log(res.result);
-        try{
-            if(res.result.ok){
+        try {
+            if (res.result.ok) {
                 ctx.redirect('/')
             }
-        }catch(err){
+        } catch (err) {
             console.log(err);
             ctx.redirect('/edit');
         }
-        
+
     })
     .get('/delete', async (ctx) => {
         let user = "sdfasdfasd";
-        let id=ctx.query.id;
-        let res=await DB.remove('user',{'_id':DB.getObjectId(id)});
-        
-        if(res.result.ok){
+        let id = ctx.query.id;
+        let res = await DB.remove('user', {'_id': DB.getObjectId(id)});
+
+        if (res.result.ok) {
             ctx.redirect('/')
-        }else{
+        } else {
             ctx.redirect('/')
         }
     })
@@ -142,11 +141,11 @@ router
 
 app.use(router.routes()); //启动路由
 app.use(router.allowedMethods());
-let appport=RandomNumBoth(3000,65533);
+let appport = RandomNumBoth(3000, 65533);
 app.listen(41601);
 console.log("http://127.0.0.1:41601");
 
-function RandomNumBoth(Min,Max){
+function RandomNumBoth(Min, Max) {
     var Range = Max - Min;
     var Rand = Math.random();
     var num = Min + Math.round(Rand * Range); //四舍五入
