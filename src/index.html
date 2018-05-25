@@ -12,6 +12,7 @@
         };
     </script>
     <script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="https://cdn.bootcss.com/screenfull.js/3.3.0/screenfull.js"></script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/hls.js/latest/hls.min.js"></script>
@@ -144,6 +145,31 @@
 </body>
 <script>
     require('./koa/app.js');
+
+    function toggleFullScreen() {
+        if (!document.fullscreenElement && // alternative standard method
+            !document.mozFullScreenElement && !document.webkitFullscreenElement && !document.msFullscreenElement) { // current working methods
+            if (document.documentElement.requestFullscreen) {
+                document.documentElement.requestFullscreen();
+            } else if (document.documentElement.msRequestFullscreen) {
+                document.documentElement.msRequestFullscreen();
+            } else if (document.documentElement.mozRequestFullScreen) {
+                document.documentElement.mozRequestFullScreen();
+            } else if (document.documentElement.webkitRequestFullscreen) {
+                document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+            }
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            }
+        }
+    }
     ////////精品资源网
     var webviewjingpin = document.getElementById("jingpinview");
     // webviewjingpin.addEventListener("did-start-loading", () => {
@@ -227,6 +253,10 @@
         document.onkeyup = function(event) { //键盘事件
             // console.log(video.volume.toFixed(1));
             var e = event || window.event || arguments.callee.caller.arguments[0];
+            console.log(e.keyCode);
+            if (e && e.keyCode == 13) { // 按 向上键
+                toggleFullScreen();
+            }
             if (e && e.keyCode == 38) { // 按 向上键
                 if (video.volume.toFixed(1) < 1) {
                     video.volume += 0.1;
