@@ -1,6 +1,6 @@
 {
     "name": "videomusiconline",
-    "version": "2018.04.12",
+    "version": "2018.05.25",
     "description": "超人影音盒",
     "main": "src/main.js",
     "scripts": {
@@ -50,7 +50,7 @@
         "cheerio": "^1.0.0-rc.2",
         "getmac": "^1.4.1",
         "mysql": "^2.15.0",
-        "request": "^2.85.0",
+        "request": "^2.87.0",
         "art-template": "^4.12.2",
         "ejs": "^2.5.9",
         "koa": "^2.5.0",
@@ -59,6 +59,6 @@
         "koa-router": "^7.4.0",
         "koa-static": "^4.0.2",
         "koa-views": "^6.1.4",
-        "mongodb": "^3.0.7"
+        "mongodb": "^3.0.8"
     }
 }

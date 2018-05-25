@@ -17,9 +17,11 @@ router
 var user = require('./admin/user');
 var node = require('./admin/node');
 var index = require('./admin/index');
+var jisuyunbo = require('./admin/jisuyunbo');
 
 router.use('/user', user);
 router.use('/node', node);
 router.use('/index', index);
+router.use('/jisuyunbo', jisuyunbo);
 
 module.exports = router.routes();

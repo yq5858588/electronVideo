@@ -9,8 +9,7 @@
     <script>
         if (typeof module === 'object') {
             window.jQuery = window.$ = module.exports;
-        }
-        ;
+        };
     </script>
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -22,6 +21,7 @@
             padding: 0;
             border-radius: 10px;
         }
+
         #myTab {
             max-height: 60px;
             min-height: 60px;
@@ -30,20 +30,24 @@
             align-items: center;
             justify-content: center;
         }
-        .nav-tabs > li {
+
+        .nav-tabs>li {
             /* /background: black; */
             line-height: 60px;
         }
-        .nav-tabs > li > a {
+
+        .nav-tabs>li>a {
             color: #fff;
             border-radius: 5px;
         }
-        .nav-tabs > li.active > a:hover {
+
+        .nav-tabs>li.active>a:hover {
             color: #555 !important;
             cursor: default;
             background-color: #fff;
             border: 1px solid #ddd;
         }
+
         #main {
             height: calc(100% - 60px);
             display: flex;
@@ -51,6 +55,7 @@
             align-items: center;
             overflow: hidden
         }
+
         #right {
             height: 100%;
             max-width: 150px;
@@ -58,6 +63,7 @@
             color: #aaa;
             background-color: #666
         }
+
         #center {
             height: 100%;
             width: calc(100% - 0px);
@@ -83,7 +89,8 @@
             <a href="#home" data-toggle="tab">播放器</a>
         </li>
         <li style="-webkit-app-region:no-drag"><a href="#jingpin" data-toggle="tab">精品电影</a></li>
-        <li style="-webkit-app-region:no-drag"><a href="#yingshi" data-toggle="tab">影视大全</a></li>
+        <li style="-webkit-app-region:no-drag"><a href="#jisuyunbo" data-toggle="tab">极速云播</a></li>
+        <li style="-webkit-app-region:no-drag"><a href="#yongjiuyun" data-toggle="tab">永久云</a></li>
         <!--<li class="dropdown" style="-webkit-app-region:no-drag">
             <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
@@ -107,16 +114,16 @@
                 <div id="videoMsg" style="position:fixed;top:70px;left:10px;width:98%;height:80%;background:#ddd;opacity:0;-webkit-app-region:drag"></div>
             </div>
             <div class="tab-pane fade" id="jingpin" style="height:100%;border:0px solid red;">
-                <webview id="fooshipin" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
             </div>
-            <div class="tab-pane fade" id="yingshi" style="height:100%;border:0px solid red">
-                    <webview id="fooshipin" src="http://127.0.0.1:41601/admin/yingshi?typeid=0" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            <div class="tab-pane fade" id="jisuyunbo" style="height:100%;border:0px solid red">
+                <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
             </div>
-            <div class="tab-pane fade" id="jmeter">
-                <webview id="foohome" src="http://www.jingpinzy.com/" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0" style="height:100%;border:0px solid red;" httpreferrer="http://www.youku.com/" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            <div class="tab-pane fade">
+                <webview id="foohome" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
             </div>
             <div class="tab-pane fade" id="weixin" style="height:100%;">
-                <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border="0" useragent="Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.221 Safari/537.36 SE 2.X MetaSr 1.0"></webview>
+                <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border="0"></webview>
             </div>
         </div>
     </div>
@@ -132,10 +139,11 @@
 </body>
 <script>
     require('./koa/app.js');
-    var webview = document.getElementById("fooshipin");
-    webview.addEventListener("did-start-loading", () => {
-        // webview.openDevTools({ mode: 'detach' });
-    });
+    ////////精品资源网
+    var webviewjingpin = document.getElementById("jingpinview");
+    // webviewjingpin.addEventListener("did-start-loading", () => {
+    //     webview.openDevTools({ mode: 'detach' });
+    // });
     /*var webview = document.getElementById("foohome");
     webview.addEventListener('dom-ready', () => {
         console.log("URL地址为：" + webview.getURL());
@@ -148,8 +156,34 @@
     webview.addEventListener('console-message', e => {
         console.log('webview: ' + e.message);
     });*/
-
+    webviewjingpin.addEventListener('console-message', e => {
+        console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
+        }
+    });
+    ///////////极速云播
+    var webviewjisuyunbo = document.getElementById("jisuyunboview");
+    // webviewjisuyunbo.addEventListener("did-start-loading", () => {
+    //     webviewjisuyunbo.openDevTools({ mode: 'detach' });
+    // });
+    /*var webview = document.getElementById("foohome");
+    webview.addEventListener('dom-ready', () => {
+        console.log("URL地址为：" + webview.getURL());
+        const webContents = webview.getWebContents();
+        webContents.on('new-window', (event, url) => {
+            event.preventDefault();
+            webview.loadURL(url);
+        });
+    });
     webview.addEventListener('console-message', e => {
+        console.log('webview: ' + e.message);
+    });*/
+    webviewjisuyunbo.addEventListener('console-message', e => {
         console.log('播放地址为: ' + e.message);
         let url = e.message.split("|")[0];
         let title = e.message.split("|")[1];
@@ -162,7 +196,7 @@
 
     var video;
     var hls;
-    $(function () {
+    $(function() {
         video = document.getElementById('videoCon');
         hls = new Hls();
     })
@@ -172,12 +206,12 @@
         if (Hls.isSupported()) {
             hls.loadSource(encodeURI(url));
             hls.attachMedia(video);
-            hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            hls.on(Hls.Events.MANIFEST_PARSED, function() {
                 video.play();
             });
         }
 
-        $('#videoCon').on('waiting', function () {
+        $('#videoCon').on('waiting', function() {
             console.log('onwaiting执行成功!');
         });
         $('#videoCon').onprogress = $("#videoMsg").show();

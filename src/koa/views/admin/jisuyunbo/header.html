@@ -1,0 +1,62 @@
+<style>
+    #nav {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 50px;
+        background: #ddd;
+    }
+    #nav > li {
+        padding: 3px;
+        text-align: center;
+        width: 60px;
+        list-style: none
+    }
+    #nav > li:hover {
+        height: 40px;
+        border-radius: 10px;
+        background: #333;
+        color: #fff;
+    }
+</style>
+<div style="position:fixed;top:0px;left:20px;z-index: 999;height: 60px;line-height: 60px">
+    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(-1);$('body').mLoading();$('body').mLoading('hide');">后退</span>
+    <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(1);$('body').mLoading();$('body').mLoading('hide');">前进</span>
+</div>
+<ul id="nav">
+    <li onclick="showInfo(0)">首页</li>
+    <li onclick="showInfo(1)">电影</li>
+    <li onclick="showInfo(2)">连续剧</li>
+    <li onclick="showInfo(3)">综艺</li>
+    <li onclick="showInfo(4)">动漫</li>
+    <li onclick="showInfo(5)">动作片</li>
+    <li onclick="showInfo(6)">喜剧片</li>
+    <li onclick="showInfo(7)">爱情片</li>
+    <li onclick="showInfo(8)">科幻片</li>
+    <li onclick="showInfo(9)">恐怖片</li>
+    <li onclick="showInfo(10)">剧情片</li>
+    <li onclick="showInfo(11)">战争片</li>
+    <li onclick="showInfo(12)">国产剧</li>
+    <li onclick="showInfo(13)">港剧</li>
+    <li onclick="showInfo(14)">日剧</li>
+    <li onclick="showInfo(15)">欧美剧</li>
+    <li onclick="showInfo(16)">伦理剧</li>
+</ul>
+
+<link rel="stylesheet" href="/style.css">
+<script src="/jquery.paginate.js"></script>
+<script>
+    function showInfo(typeid) {
+        $("body").mLoading();
+        window.location.href = "/admin/jisuyunbo?typeid=" + typeid + "&page=0";
+    }
+</script>
+
+<script src="/loadingputong/src/jquery.mloading.js"></script>
+<link rel="stylesheet" href="/loadingputong/src/jquery.mloading.css">
