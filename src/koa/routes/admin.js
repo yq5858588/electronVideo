@@ -18,10 +18,14 @@ var user = require('./admin/user');
 var node = require('./admin/node');
 var index = require('./admin/index');
 var jisuyunbo = require('./admin/jisuyunbo');
+var yongjiuyun = require('./admin/yongjiuyun');
+var zuidaziyuan = require('./admin/zuidaziyuan');
 
 router.use('/user', user);
 router.use('/node', node);
 router.use('/index', index);
 router.use('/jisuyunbo', jisuyunbo);
+router.use('/yongjiuyun', yongjiuyun);
+router.use('/zuidaziyuan', zuidaziyuan);
 
 module.exports = router.routes();
