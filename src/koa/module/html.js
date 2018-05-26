@@ -1,5 +1,6 @@
 var cheerio = require("cheerio");
 var urlPar = require("url");
+var request = require('request');
 
 class Html {
 
@@ -11,7 +12,6 @@ class Html {
     }
     getHtml(url) {
         return new Promise((resolve, reject) => {
-            var request = require('request');
             var options = {
                 url: url,
                 headers: {
@@ -26,7 +26,26 @@ class Html {
                 resolve(body);
             })
         })
-
+    }
+    postHtml(url,requestData){
+        return new Promise((resolve, reject)=>{
+            var options = {
+                method: "POST",
+                json: true,
+                headers: {
+                    "Content-type": "application/json; charset=UTF-8",
+                    "Accept": "application/json; charset=UTF-8"
+                },
+                form: (requestData)
+            };
+            request.post(url,options, function (error, response, body) {
+                if (error) {
+                    reject(error);
+                    return;
+                }                
+                resolve(body);
+            })
+        })
     }
 }
 

@@ -113,8 +113,8 @@
                 <video width="100%" height="100%" controls="controls" autoplay="autoplay" id="videoCon">
                     <source src="" type="video/mp4">
                 </video>
-                <div style="position:fixed;top:70px;left:10px;width:98%;height:calc(100% - 330px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
-                <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:50%">加载中...</h4>
+                <div style="position:fixed;top:70px;left:10px;width:98%;height:calc(100% - 120px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
+                <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:50%;background:#ddd;">加载中...</h4>
             </div>
             <div class="tab-pane fade" id="jingpin" style="height:100%;border:0px solid red;">
                 <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
@@ -249,13 +249,19 @@
         video = document.getElementById('videoCon');
         video.controls = true;
         hls = new Hls();
-
+        document.addEventListener("fullscreenchange", function() {
+            console.log(document.fullscreen);
+            
+            // fullscreenState.innerHTML = (document.fullscreen) ? "" : "not ";
+        }, false);
         document.onkeyup = function(event) { //键盘事件
             // console.log(video.volume.toFixed(1));
             var e = event || window.event || arguments.callee.caller.arguments[0];
-            console.log(e.keyCode);
-            if (e && e.keyCode == 13) { // 按 向上键
-                toggleFullScreen();
+            // console.log(e.keyCode);
+            if (e && e.keyCode == 13) { // 按enter键
+                // toggleFullScreen();
+                // document.getElementById('videoCon').requestFullScreen();
+                document.requestFullscreen();
             }
             if (e && e.keyCode == 38) { // 按 向上键
                 if (video.volume.toFixed(1) < 1) {
@@ -305,9 +311,14 @@
 
         $('#videoCon').on('waiting', function() {
             console.log('onwaiting执行成功!');
+            $("#videoMsg").show();
         });
-        $('#videoCon').onprogress = $("#videoMsg").show();
-        $('#videoCon').canplay = $("#videoMsg").hide();
+        $('#videoCon').on('onprogress', function() {
+            $("#videoMsg").show();
+        });
+        $('#videoCon').on('canplay', function() {
+            $("#videoMsg").hide();
+        });
     }
 </script>
 </html>
