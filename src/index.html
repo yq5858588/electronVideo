@@ -91,16 +91,14 @@
             <a href="#home" data-toggle="tab">播放器</a>
         </li>
         <li style="-webkit-app-region:no-drag"><a href="#jingpin" data-toggle="tab">精品电影</a></li>
-        <li style="-webkit-app-region:no-drag"><a href="#jisuyunbo" data-toggle="tab">极速云播</a></li>
-        <li style="-webkit-app-region:no-drag"><a href="#yongjiuyun" data-toggle="tab">永久云</a></li>
-        <li style="-webkit-app-region:no-drag"><a href="#zuidaziyuan" data-toggle="tab">最大资源</a></li>
-        <!--<li class="dropdown" style="-webkit-app-region:no-drag">
+        <li class="dropdown" style="-webkit-app-region:no-drag">
             <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-                <li><a href="#jmeter" tabindex="-1" data-toggle="tab">jmeter</a></li>
-                <li><a href="#weixin" tabindex="-1" data-toggle="tab">weixin</a></li>
+                <li><a href="#jisuyunbo" tabindex="-1" data-toggle="tab">极速云播</a></li>
+                <li><a href="#yongjiuyun" tabindex="-1" data-toggle="tab">永久云</a></li>
+                <li><a href="#zuidaziyuan" tabindex="-1" data-toggle="tab">最大资源</a></li>
             </ul>
-        </li> -->
+        </li>
     </ul>
     <span style="position:fixed;top:15px;right:20px;-webkit-app-region:no-drag">
         <img src="../res/close.png" width="30" height="30" alt="" onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
@@ -110,11 +108,11 @@
     <div id="center">
         <div id="myTabContent" class="tab-content" style="height:calc(100% - 0px);border:0px solid red">
             <div class="tab-pane fade  in active" id="home" style="height:100%;border:0px solid red;position: relative;">
-                <video width="100%" height="100%" controls="controls" autoplay="autoplay" id="videoCon">
+                <video width="100%" height="100%" controls="controls" autoplay="autoplay" preload="auto" id="videoCon">
                     <source src="" type="video/mp4">
                 </video>
                 <div style="position:fixed;top:70px;left:10px;width:98%;height:calc(100% - 120px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
-                <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:50%;background:#ddd;">加载中...</h4>
+                <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:calc(50% - 40px);background:#000;color:#fff;padding:5px;border-radius:5px;">加载中...</h4>
             </div>
             <div class="tab-pane fade" id="jingpin" style="height:100%;border:0px solid red;">
                 <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
@@ -251,7 +249,7 @@
         hls = new Hls();
         document.addEventListener("fullscreenchange", function() {
             console.log(document.fullscreen);
-            
+
             // fullscreenState.innerHTML = (document.fullscreen) ? "" : "not ";
         }, false);
         document.onkeyup = function(event) { //键盘事件
