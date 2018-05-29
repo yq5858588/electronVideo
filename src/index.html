@@ -71,6 +71,31 @@
             width: calc(100% - 0px);
             background-color: #000
         }
+        #yingshileft{
+            border:0px solid red;
+            background: #000;
+            color: #fff;
+            width:80px;
+            height:100%;
+            overflow: auto;
+        }
+        #yingshileft>div{
+            height:50px;
+            line-height:50px;
+            padding:5px;
+            border-bottom:1px solid #ddd;
+        }
+        #yingshileft>div:hover{
+            background: #fff;
+            color: #000;
+            height:50px;
+            line-height:50px;
+            border-left:5px solid #000;
+        }
+        #yingshiright{
+            border:0px solid red;
+            width:100%;
+        }
     </style>
     <script type="text/javascript">
         // var dbmysql = require('./utils/mysqleasy.js');
@@ -87,18 +112,18 @@
 <h4 id="vediotitle" style="position:fixed;top:-10px;left:10px;color:#fff;height:60px;line-height: 60px;font-size:12px">标题</h4>
 <div id="top" style="-webkit-app-region:drag" style="position: relative;">
     <ul id="myTab" class="nav nav-tabs">
-        <li class="active" style="-webkit-app-region:no-drag">
+        <li style="-webkit-app-region:no-drag">
             <a href="#home" data-toggle="tab">播放器</a>
         </li>
-        <li style="-webkit-app-region:no-drag"><a href="#jingpin" data-toggle="tab">精品电影</a></li>
-        <li class="dropdown" style="-webkit-app-region:no-drag">
+        <li class="active" style="-webkit-app-region:no-drag"><a href="#jingpin" data-toggle="tab">影视大全</a></li>
+        <!-- <li class="dropdown" style="-webkit-app-region:no-drag">
             <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
                 <li><a href="#jisuyunbo" tabindex="-1" data-toggle="tab">极速云播</a></li>
                 <li><a href="#yongjiuyun" tabindex="-1" data-toggle="tab">永久云</a></li>
                 <li><a href="#zuidaziyuan" tabindex="-1" data-toggle="tab">最大资源</a></li>
             </ul>
-        </li>
+        </li> -->
     </ul>
     <span style="position:fixed;top:15px;right:20px;-webkit-app-region:no-drag">
         <img src="../res/close.png" width="30" height="30" alt="" onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
@@ -107,28 +132,41 @@
 <div id="main">
     <div id="center">
         <div id="myTabContent" class="tab-content" style="height:calc(100% - 0px);border:0px solid red">
-            <div class="tab-pane fade  in active" id="home" style="height:100%;border:0px solid red;position: relative;">
+            <div class="tab-pane fade" id="home" style="height:100%;border:0px solid red;position: relative;">
                 <video width="100%" height="100%" controls="controls" autoplay="autoplay" preload="auto" id="videoCon">
                     <source src="" type="video/mp4">
                 </video>
                 <div style="position:fixed;top:70px;left:10px;width:98%;height:calc(100% - 120px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
                 <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:calc(50% - 40px);background:#000;color:#fff;padding:5px;border-radius:5px;">加载中...</h4>
             </div>
-            <div class="tab-pane fade" id="jingpin" style="height:100%;border:0px solid red;">
-                <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            <div class="tab-pane fade  in active" id="jingpin" style="height:100%;border:0px solid red;background: #fff;display:flex;">
+                <div id="yingshileft">
+                    <div class="yingshileft-child">精品电影</div>
+                    <div class="yingshileft-child">极速云播</div>
+                    <div class="yingshileft-child">永久云</div>
+                    <div class="yingshileft-child">最大资源</div>
+                    <div class="yingshileft-child">5sdfgsdfg</div>
+                </div>
+                <div id="yingshiright">
+                    <div style="display:block;height:100%;width:100%">
+                        <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                            <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                            <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                            <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                            <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border="0"></webview>
+                    </div>
+                </div>
             </div>
-            <div class="tab-pane fade" id="jisuyunbo" style="height:100%;border:0px solid red">
-                <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-            </div>
-            <div class="tab-pane fade" id="yongjiuyun" style="height:100%;border:0px solid red">
-                <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-            </div>
-            <div class="tab-pane fade" id="zuidaziyuan" style="height:100%;border:0px solid red">
-                <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-            </div>
-            <div class="tab-pane fade" id="weixin" style="height:100%;">
-                <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border="0"></webview>
-            </div>
+            <!-- <div class="tab-pane fade" id="jisuyunbo" style="height:100%;border:0px solid red">
+            </div> -->
         </div>
     </div>
     <!-- <div id="right">
@@ -142,6 +180,10 @@
 </div>
 </body>
 <script>
+    $('.yingshileft-child').click(function () {
+        $(this).parent().next().children().eq($(this).index()).show().siblings().hide();
+        $(this).css({"background-color":"#fff","color":"#000","border-left":"5px solid #000"}).siblings().css({"background-color":"#000","color":"#fff"});
+    })
     require('./koa/app.js');
 
     function toggleFullScreen() {
@@ -171,7 +213,7 @@
     ////////精品资源网
     var webviewjingpin = document.getElementById("jingpinview");
     // webviewjingpin.addEventListener("did-start-loading", () => {
-    //     webview.openDevTools({ mode: 'detach' });
+    //     webviewjingpin.openDevTools({ mode: 'detach' });
     // });
     /*var webview = document.getElementById("foohome");
     webview.addEventListener('dom-ready', () => {
