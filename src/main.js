@@ -28,7 +28,7 @@ function createWindow() {
     mainWindow = new BrowserWindow({
         transparent: true,
         frame: false,
-        width: 1500,
+        width: 1057,
         fullscreenable: true,
         height: 627,
         icon: path.join(__dirname, '../res/icon.ico')
