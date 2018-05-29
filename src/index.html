@@ -21,7 +21,8 @@
             height: 100%;
             margin: 0;
             padding: 0;
-            border-radius: 10px;
+            border-radius: 2px;
+            border:1px solid #000;
         }
 
         #myTab {
@@ -108,7 +109,7 @@
         // require('./renderer.js');
     </script>
 </head>
-
+<body>
 <h4 id="vediotitle" style="position:fixed;top:-10px;left:10px;color:#fff;height:60px;line-height: 60px;font-size:12px">标题</h4>
 <div id="top" style="-webkit-app-region:drag" style="position: relative;">
     <ul id="myTab" class="nav nav-tabs">
@@ -324,7 +325,7 @@
                 }
             }
         };
-        $('body').bind('mousewheel', function(event, delta) {
+        $('#videoCon').bind('mousewheel', function(event, delta) {
             var dir = delta > 0 ? 'Up' : 'Down';
             if (dir == 'Up') {
                 if (video.volume.toFixed(1) < 1) {
