@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../res/layx.min.css">
+    <script src="../res/layx.min.js"></script>
+</head>
+<body style="-webkit-app-region:drag">
+
+</body>
+<script>
+    layx.iframe('localsite', '本地网页', 'index.html', {
+        event: {
+            onresize: {
+                before: function(layxWindow, winform) {
+                    console.log(new Date() + "拖曳大小之前~")
+                    console.log(winform);
+                    console.log("=============分割线===============");
+                },
+                progress: function(layxWindow, winform) {
+                    console.log(new Date() + "拖动大小之中~")
+                    console.log(winform);
+                    console.log("=============分割线===============");
+                },
+                after: function(layxWindow, winform) {
+                    console.log(new Date() + "拖曳大小之后~")
+                    console.log(winform);
+                    console.log("=============分割线===============");
+                }
+            }
+        }
+    });
+</script>
+</html>

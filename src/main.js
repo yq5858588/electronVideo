@@ -26,7 +26,7 @@ function createWindow() {
 
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        transparent: true,
+        transparent: false,
         frame: false,
         width: 1057,
         fullscreenable: true,
