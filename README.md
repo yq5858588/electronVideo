@@ -35,9 +35,7 @@
 我的码云地址为：https://gitee.com/yq5858588
 
 
-安装包下载地址：https://pan.baidu.com/s/1suWrvRAIPrlaDMfSpckIgA
-
-绿色版下载地址：https://pan.baidu.com/s/1pEHpfFiY10yTYPYiXts7aA
+下载地址：https://pan.baidu.com/s/12X8p91ybsfNRfGFpoYhU8Q
 
 npm install electron-builder -g  //安装打包环境
 

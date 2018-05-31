@@ -31,6 +31,7 @@ function createWindow() {
         width: 779,
         fullscreenable: true,
         height: 558,
+        alwaysOnTop:true,
         icon: path.join(__dirname, '../res/icon.ico')
     })
 

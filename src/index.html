@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <meta http-equiv="content-type" content="text/html;charset=UTF-8">
     <meta http-equiv="Cache-Control" content="max-age=135000" />
+    <link rel="stylesheet" href="../res/layx.min.css">
+    <script src="../res/layx.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script>
         if (typeof module === 'object') {
@@ -22,7 +24,7 @@
             margin: 0;
             padding: 0;
             border-radius: 2px;
-            border:1px solid #000;
+            border: 1px solid #000;
         }
 
         #myTab {
@@ -72,30 +74,34 @@
             width: calc(100% - 0px);
             background-color: #000
         }
-        #yingshileft{
-            border:0px solid red;
+
+        #yingshileft {
+            border: 0px solid red;
             background: #000;
             color: #fff;
-            width:80px;
-            height:100%;
+            width: 80px;
+            height: 100%;
             overflow: auto;
         }
-        #yingshileft>div{
-            height:50px;
-            line-height:50px;
-            padding:5px;
-            border-bottom:1px solid #ddd;
+
+        #yingshileft>div {
+            height: 50px;
+            line-height: 50px;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
         }
-        #yingshileft>div:hover{
+
+        #yingshileft>div:hover {
             background: #fff;
             color: #000;
-            height:50px;
-            line-height:50px;
-            border-left:5px solid #000;
+            height: 50px;
+            line-height: 50px;
+            border-left: 5px solid #000;
         }
-        #yingshiright{
-            border:0px solid red;
-            width:100%;
+
+        #yingshiright {
+            border: 0px solid red;
+            width: 100%;
         }
     </style>
     <script type="text/javascript">
@@ -126,8 +132,11 @@
             </ul>
         </li> -->
     </ul>
+    <span style="position:fixed;top:15px;right:50px;-webkit-app-region:no-drag">
+        <img src="../res/set.png" width="20" height="20" alt="" onclick="showRizhi()">
+    </span>
     <span style="position:fixed;top:15px;right:20px;-webkit-app-region:no-drag">
-        <img src="../res/close.png" width="30" height="30" alt="" onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
+        <img src="../res/close.png" width="18" height="18" alt="" onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
     </span>
 </div>
 <div id="main">
@@ -146,23 +155,23 @@
                     <div class="yingshileft-child">极速云播</div>
                     <div class="yingshileft-child">永久云</div>
                     <div class="yingshileft-child">最大资源</div>
-                    <div class="yingshileft-child">5sdfgsdfg</div>
+                    <div class="yingshileft-child">测试</div>
                 </div>
                 <div id="yingshiright">
                     <div style="display:block;height:100%;width:100%">
                         <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
                     </div>
                     <div style="display: none;height:100%;width:100%">
-                            <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                        <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
                     </div>
                     <div style="display: none;height:100%;width:100%">
-                            <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                        <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
                     </div>
                     <div style="display: none;height:100%;width:100%">
-                            <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                        <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
                     </div>
                     <div style="display: none;height:100%;width:100%">
-                            <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border="0"></webview>
+                        <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border="0"></webview>
                     </div>
                 </div>
             </div>
@@ -181,9 +190,9 @@
 </div>
 </body>
 <script>
-    $('.yingshileft-child').click(function () {
+    $('.yingshileft-child').click(function() {
         $(this).parent().next().children().eq($(this).index()).show().siblings().hide();
-        $(this).css({"background-color":"#fff","color":"#000","border-left":"5px solid #000"}).siblings().css({"background-color":"#000","color":"#fff"});
+        $(this).css({ "background-color": "#fff", "color": "#000", "border-left": "5px solid #000" }).siblings().css({ "background-color": "#000", "color": "#fff" });
     })
     require('./koa/app.js');
 
@@ -359,6 +368,27 @@
         });
         $('#videoCon').on('canplay', function() {
             $("#videoMsg").hide();
+        });
+    }
+
+    function showRizhi() {
+        layx.iframe('localsite', '更新日志', 'rizhi.html', {
+            type: 'url',
+            useFrameTitle: true,
+            movable: false,
+            minMenu: false,
+            maxMenu: false,
+            // minWidth:50,
+            // minHeight:50,
+            // width:100,
+            dragInTopToMax: false,
+            event: {
+                onload: {
+                    after: function(layxWindow, winform) {
+                        layx.max(winform.id);
+                    }
+                }
+            }
         });
     }
 </script>
