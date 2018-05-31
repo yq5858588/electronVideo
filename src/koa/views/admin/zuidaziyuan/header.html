@@ -1,5 +1,12 @@
 <style>
+    ul, li {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
     #nav {
+        z-index: 999;
         position: fixed;
         top: 0px;
         left: 0px;
@@ -9,20 +16,99 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        line-height: 50px;
+        background: #ddd;
+        height: 50px;
+    }
+
+    #nav li a {
+        display: block;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #000000;
+    }
+
+    #nav li {
+        position: relative;
+        margin-bottom: 2px;
+        /* float: left; */
+        margin-right: 5px;
+    }
+
+    #nav li ul {
+        position: absolute;
+        left: 0px;
+        top: 40px;
+        text-align: center;
+        display: none;
+        width: 100px;
+        color: #ffffff;
+        background-color: #000000;
+    }
+
+    #nav li ul li {
+        height: 30px;
+    }
+
+    #nav li:hover ul {
+        display: block;
+    }
+
+    /*搜索框1*/
+    .bar6 {
+        width: 100%;
+        height:60px;
+        margin-top: 50px;
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        border: 0px solid red;
         background: #ddd;
     }
-    #nav > li {
-        padding: 3px;
-        text-align: center;
-        /* width: 60px; */
-        list-style: none
+    form {
+        position: relative;
+        width: 300px;
+        margin: 0 auto;
     }
-    #nav > li:hover {
-        height: 40px;
-        border-radius: 10px;
-        background: #333;
-        color: #fff;
+
+    input, button {
+        border: none;
+        outline: none;
+    }
+
+    input {
+        width: 100%;
+        height: 42px;
+        padding-left: 13px;
+    }
+
+    .bar6 input {
+        border: 2px solid #c5464a;
+        border-radius: 5px;
+        background: transparent;
+        top: 0;
+        right: 0;
+    }
+
+    .bar6 button {
+        background: #c5464a;
+        border-radius: 0 5px 5px 0;
+        width: 60px;
+        top: 0;
+        right: -18px;
+        height: 46px;
+        width: 68px;
+        cursor: pointer;
+        position: absolute;
+    }
+
+    .bar6 button:before {
+        content: "搜索";
+        font-size: 13px;
+        color: #F9F0DA;
     }
 </style>
 <div style="position:fixed;top:50px;left:20px;z-index: 999;height: 60px;line-height: 60px">
@@ -30,25 +116,42 @@
     <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(1);$('body').mLoading();$('body').mLoading('hide');">前进</span>
 </div>
 <ul id="nav">
-    <li onclick="showInfo(0)">首页</li>
-    <li onclick="showInfo(1)">电影</li>
-    <li onclick="showInfo(2)">电视</li>
-    <li onclick="showInfo(3)">综艺</li>
-    <li onclick="showInfo(4)">动漫</li>
-    <li onclick="showInfo(5)">动作片</li>
-    <li onclick="showInfo(6)">喜剧片</li>
-    <li onclick="showInfo(7)">爱情片</li>
-    <li onclick="showInfo(8)">科幻片</li>
-    <li onclick="showInfo(9)">恐怖片</li>
-    <li onclick="showInfo(10)">剧情片</li>
-    <li onclick="showInfo(11)">战争片</li>
-    <li onclick="showInfo(12)">国产剧</li>
-    <li onclick="showInfo(13)">港台剧</li>
-    <li onclick="showInfo(14)">日韩剧</li>
-    <li onclick="showInfo(15)">欧美剧</li>
-    <li onclick="showInfo(16)">福利</li>
-    <li onclick="showInfo(17)">伦理片</li>
+    <li><a href="#" onclick="showInfo(0)">首页</a></li>
+    <li><a href="#" onclick="showInfo(1)">电影</a>
+        <ul>
+            <li onclick="showInfo(5)">动作片</li>
+            <li onclick="showInfo(6)">喜剧片</li>
+            <li onclick="showInfo(7)">爱情片</li>
+            <li onclick="showInfo(8)">科幻片</li>
+            <li onclick="showInfo(9)">恐怖片</li>
+            <li onclick="showInfo(10)">剧情片</li>
+            <li onclick="showInfo(11)">战争片</li>
+            <li onclick="showInfo(17)">伦理片</li>
+        </ul>
+    </li>
+    <li><a href="#" onclick="showInfo(2)">电视</a>
+        <ul>
+            <li onclick="showInfo(12)">国产剧</li>
+            <li onclick="showInfo(13)">港台剧</li>
+            <li onclick="showInfo(14)">日韩剧</li>
+            <li onclick="showInfo(15)">欧美剧</li>
+        </ul>
+    </li>
+    <li><a href="#" onclick="showInfo(3)">综艺</a>
+    </li>
+    <li><a href="#" onclick="showInfo(4)">动漫</a>
+    </li>
+    <li><a href="#" onclick="showInfo(16)">福利</a>
+    </li>
 </ul>
+
+<div class="bar6">
+    <form  method="POST" action="/admin/zuidaziyuan/seach">
+        <input type="text" name="wd" placeholder="请输入您要搜索的内容...">
+        <input type="hidden" name="submit" value="search">
+        <button type="submit"></button>
+    </form>
+</div>
 
 <link rel="stylesheet" href="/style.css">
 <script src="/jquery.paginate.js"></script>

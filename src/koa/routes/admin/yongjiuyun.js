@@ -108,7 +108,7 @@ router
                 datalist.push(info);
             });
         }
-        await ctx.render('admin/zuidaziyuan/index', {
+        await ctx.render('admin/yongjiuyun/index', {
             list: datalist,
             total: total[1],
             curpage: (page - 1),
