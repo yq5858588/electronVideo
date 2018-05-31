@@ -23,12 +23,13 @@
     #nav li a {
         display: block;
         width: 100px;
-        height: 40px;
-        line-height: 40px;
+        height: 30px;
+        line-height: 30px;
         text-align: center;
         text-decoration: none;
         color: #ffffff;
-        background-color: #000000;
+        font-size: 12px;
+        background-color: #333;
     }
 
     #nav li {
@@ -41,12 +42,14 @@
     #nav li ul {
         position: absolute;
         left: 0px;
-        top: 40px;
+        top: 30px;
         text-align: center;
         display: none;
         width: 100px;
+        font-size: 12px;
         color: #ffffff;
-        background-color: #000000;
+        background-color: #333;
+        padding-top:10px;
     }
 
     #nav li ul li {
@@ -115,18 +118,6 @@
     <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(-1);$('body').mLoading();$('body').mLoading('hide');">后退</span>
     <span style="cursor: pointer;width:100px;height:40px;background:#000;color:#fff;border-radius:8px;padding:3px 8px" onclick="window.history.go(1);$('body').mLoading();$('body').mLoading('hide');">前进</span>
 </div>
-<ul id="nav">
-    <li onclick="showInfo(0)">首页</li>
-    <li onclick="showInfo(5)">动作片</li>
-    <li onclick="showInfo(6)">喜剧片</li>
-    <li onclick="showInfo(7)">爱情片</li>
-    <li onclick="showInfo(8)">科幻片</li>
-    <li onclick="showInfo(9)">恐怖片</li>
-    <li onclick="showInfo(10)">剧情片</li>
-    <li onclick="showInfo(11)">战争片</li>
-    <li onclick="showInfo(17)">动画片</li>
-</ul>
-
 <ul id="nav">
     <li><a href="#" onclick="showInfo(0)">电影</a>
         <ul>
