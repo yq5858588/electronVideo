@@ -155,7 +155,8 @@
                     <div class="yingshileft-child">极速云播</div>
                     <div class="yingshileft-child">永久云</div>
                     <div class="yingshileft-child">最大资源</div>
-                    <div class="yingshileft-child">测试</div>
+                    <div class="yingshileft-child">酷播资源</div>
+                    <div class="yingshileft-child">OK资源</div>
                 </div>
                 <div id="yingshiright">
                     <div style="display:block;height:100%;width:100%">
@@ -171,7 +172,10 @@
                         <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
                     </div>
                     <div style="display: none;height:100%;width:100%">
-                        <webview id="fooWeixin" src="https://wx.qq.com/" httpreferrer="https://wx.qq.com/" disablewebsecurity="on" autosize="on" plugins="on" style="height:100%;border:0px solid red;" border="0"></webview>
+                        <webview id="kuboziyuanview" src="http://127.0.0.1:41601/admin/kuboziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                        <webview id="okziyuanview" src="http://127.0.0.1:41601/admin/okziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
                     </div>
                 </div>
             </div>
@@ -283,6 +287,36 @@
     //     webviewzuidaziyuan.openDevTools({ mode: 'detach' });
     // });
     webviewzuidaziyuan.addEventListener('console-message', e => {
+        console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
+        }
+    });
+    ///////////酷播资源
+    var webviewkuboziyuan = document.getElementById("kuboziyuanview");
+    // webviewkuboziyuan.addEventListener("did-start-loading", () => {
+    //     webviewkuboziyuan.openDevTools({ mode: 'detach' });
+    // });
+    webviewkuboziyuan.addEventListener('console-message', e => {
+        console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
+        }
+    });
+    ///////////OK资源
+    var webviewokziyuan = document.getElementById("okziyuanview");
+    // webviewokziyuan.addEventListener("did-start-loading", () => {
+    //     webviewokziyuan.openDevTools({ mode: 'detach' });
+    // });
+    webviewokziyuan.addEventListener('console-message', e => {
         console.log('播放地址为: ' + e.message);
         let url = e.message.split("|")[0];
         let title = e.message.split("|")[1];
