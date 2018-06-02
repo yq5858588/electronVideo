@@ -27,7 +27,7 @@ function createWindow() {
     // Create the browser window.
     mainWindow = new BrowserWindow({
         transparent: false,
-        frame: false,
+        frame: true,
         width: 779,
         fullscreenable: true,
         height: 558,
@@ -36,7 +36,7 @@ function createWindow() {
     })
 
     mainWindow.loadURL(url.format({
-        pathname: path.join(__dirname, 'index.html'),
+        pathname: path.join(__dirname, '1.html'),
         protocol: 'file:',
         slashes: true
     }))
@@ -91,7 +91,7 @@ function createWindow() {
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
     //注册打开控制台的快捷键
-    globalShortcut.register('F6', function () {
+    globalShortcut.register('F7', function () {
         let win = BrowserWindow.getFocusedWindow();
         if (win) {
             // win.webContents.print();
@@ -104,7 +104,7 @@ function createWindow() {
         }
     });
     //快捷键
-    globalShortcut.register('ctrl+shift+p', function () {
+    globalShortcut.register('F6', function () {
         let win = BrowserWindow.getFocusedWindow();
         if (!win) return;
         win.reload();
