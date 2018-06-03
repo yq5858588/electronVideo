@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://cdn.bootcss.com/video.js/7.0.3/video-js.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/video.js/7.0.3/video.js"></script>
+    <script src="https://cdn.bootcss.com/video.js/7.0.3/lang/zh-CN.js"></script>
+    <style>
+        .video-js .vjs-big-play-button {
+            font-size: 2.5em;
+            line-height: 2.3em;
+            height: 2.5em;
+            width: 2.5em;
+            -webkit-border-radius: 2.5em;
+            -moz-border-radius: 2.5em;
+            border-radius: 2.5em;
+            background-color: #73859f;
+            background-color: rgba(115, 133, 159, .5);
+            border-width: 0.15em;
+            margin-top: -1.25em;
+            margin-left: -1.75em;
+        }
+
+        /* 中间的播放箭头 */
+
+        .vjs-big-play-button .vjs-icon-placeholder {
+            font-size: 1.63em;
+        }
+
+        /* 加载圆圈 */
+
+        .vjs-loading-spinner {
+            font-size: 2.5em;
+            width: 2em;
+            height: 2em;
+            border-radius: 1em;
+            margin-top: -1em;
+            margin-left: -1.5em;
+        }
+
+        .video-js .vjs-time-control {
+            display: block;
+        }
+
+        .video-js .vjs-remaining-time {
+            display: none;
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<video id="myvideo" class="video-js vjs-default-skin vjs-big-play-centered" controls preload="auto" width="640" height="264" data-setup='{}'>
+  </video>
+<button onclick="playVideo()">播放</button>
+</body>
+<script>
+    var options = {
+        techOrder: ["html5"],
+        bigPlayButton: false,
+        textTrackDisplay: false,
+        posterImage: false,
+        errorDisplay: false,
+        control: {
+            captionsButton: false,
+            chaptersButton: false,
+            subtitlesButton: false,
+            liveDisplay: false,
+            playbackRateMenuButton: false
+        }
+    }
+
+    var player = videojs('#myvideo', options, function onPlayerReady() {
+        videojs.log('播放器已经准备好了!');
+
+        // In this context, `this` is the player that was created by Video.js.<br>  // 注意，这个地方的上下文， `this` 指向的是Video.js的实例对像player
+        //this.src("http://youku.com-youku.com/20180317/LhrheHJk/index.m3u8");
+        //this.load();
+        //this.play();
+
+        // How about an event listener?<br>  // 如何使用事件监听？
+        this.on('ended', function() {
+            videojs.log('播放结束了!');
+        });
+    });
+    /*//获取到返回回来到视频播放器
+    var videoPlayer = videojs('eleId', {}, function() {
+        //手动设置视频播放器的视频源
+        player.src('');
+    });
+    //播放与暂停播放
+    videoPlayer.play();
+    videoPlayer.pause();
+    //设置／获取视频的当前播放时间
+    videoPlayer.currentTime();
+    videoPlayer.currentTime(120);
+    //视频总的时常
+    videoPlayer.duration();
+
+    //获取或设置播放器的视频源
+    videoPlayer.src();
+    videoPlayer.src('www.baidu.mp4')
+
+    //获取或者设置视频播放器的poster 图片
+    videoPlayer.poster();
+    videoPlater.poster('xxx.jpg');*/
+
+    function playVideo() {
+        // video.pause();
+        // console.log(player);
+        player.src("http://youku.com-youku.com/20180317/LhrheHJk/index.m3u8");
+        player.load();
+        // player.width(300).height(200);
+        player.play();
+        // player.pause();
+    }
+</script>
+</html>
