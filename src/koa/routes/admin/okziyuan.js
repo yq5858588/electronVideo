@@ -15,7 +15,9 @@ router
             url = 'http://www.okokzy.cc/?m=vod-type-id-' + typeid + '-pg-' + (page) + '.html';
         }
         let datalist = [];
+        
         let html = await Html.getHtml(url);
+        // console.log(html);
 
         var $ = cheerio.load(html);
         $("div.xing_vb>ul").each(function(i, e) {
@@ -36,6 +38,7 @@ router
             }
         });
         total = html.match(/共(\d+)条数据/);
+        
         await ctx.render('admin/okziyuan/index', {
             list: datalist,
             total: total[1],
