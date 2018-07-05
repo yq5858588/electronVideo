@@ -10,9 +10,9 @@ router
         let typeid = ctx.request.query.typeid;
         let page = parseInt(ctx.request.query.page) + 1;
         if (typeid == 0) {
-            url = 'http://www.zuidazy.com/?m=vod-index-pg-' + (page) + '.html';
+            url = 'http://zuidazy.net/?m=vod-index-pg-' + (page) + '.html';
         } else {
-            url = 'http://www.zuidazy.com/?m=vod-type-id-' + typeid + '-pg-' + (page) + '.html';
+            url = 'http://zuidazy.net/?m=vod-type-id-' + typeid + '-pg-' + (page) + '.html';
         }
         let datalist = [];
         let html = await Html.getHtml(url);
@@ -44,7 +44,7 @@ router
         });
     })
     .get('/info', async (ctx) => {
-        let html = await Html.getHtml('http://www.zuidazy.com/' + ctx.request.query.url);
+        let html = await Html.getHtml('http://zuidazy.net/' + ctx.request.query.url);
         var tempTr = cheerio.load(html);
         var info = {};
         info.img = tempTr("div.vodImg > img").attr("src");
@@ -76,7 +76,7 @@ router
         var wd = (ctx.request.body.wd);
         var typeid = 0;
         let page = 1;
-        url = 'http://www.zuidazy.com/index.php?m=vod-search';
+        url = 'http://zuidazy.net/index.php?m=vod-search';
         let datalist = [];
         let html;
         if (wd == "" || wd == null) {
