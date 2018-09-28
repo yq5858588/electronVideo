@@ -1,64 +1,64 @@
 {
-    "name": "videomusiconline",
-    "version": "2018.05.25",
-    "description": "超人影音盒",
-    "main": "src/main.js",
-    "scripts": {
-        "start": "electron .",
-        "packager": "electron-packager . appName --platform=win32 --arch=x64 --electron-version=2.0.0 --out=out --overwrite",
-        "pack": "electron-builder --dir",
-        "dist": "electron-builder"
+  "name": "videomusiconline",
+  "version": "2018.05.25",
+  "description": "超人影音盒",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "packager": "electron-packager . appName --platform=win32 --arch=x64 --electron-version=2.0.0 --out=out --overwrite",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "build": {
+    "appId": "com.yq.video",
+    "copyright": "杨庆",
+    "productName": "超人影音盒",
+    "dmg": {
+      "background": "res/background.png",
+      "window": {
+        "x": 100,
+        "y": 100,
+        "width": 500,
+        "height": 300
+      }
     },
-    "repository": "https://github.com/electron/electron-quick-start",
-    "keywords": [
-        "Electron",
-        "quick",
-        "start",
-        "tutorial",
-        "demo"
-    ],
-    "build": {
-        "appId": "com.yq.video",
-        "copyright": "杨庆",
-        "productName": "超人影音盒",
-        "dmg": {
-            "background": "res/background.png",
-            "window": {
-                "x": 100,
-                "y": 100,
-                "width": 500,
-                "height": 300
-            }
-        },
-        "win": {
-            "icon": "res/icon.ico"
-        }
-    },
-    "author": "杨庆",
-    "license": "CC0-1.0",
-    "devDependencies": {
-        "ava": "^0.18.0",
-        "babel-cli": "^6.24.1",
-        "babel-preset-think-node": "^1.0.0",
-        "eslint": "^4.2.0",
-        "eslint-config-think": "^1.0.0",
-        "mongodb": "^3.0.6",
-        "node-notifier": "^5.0.2",
-        "nyc": "^7.0.0"
-    },
-    "dependencies": {
-        "cheerio": "^1.0.0-rc.2",
-        "getmac": "^1.4.1",
-        "mysql": "^2.15.0",
-        "request": "^2.87.0",
-        "art-template": "^4.12.2",
-        "ejs": "^2.5.9",
-        "koa": "^2.5.0",
-        "koa-art-template": "^1.1.1",
-        "koa-bodyparser": "^4.2.0",
-        "koa-router": "^7.4.0",
-        "koa-static": "^4.0.2",
-        "koa-views": "^6.1.4",
-        "mongodb": "^3.0.8"
+    "win": {
+      "icon": "res/icon.ico"
     }
+  },
+  "author": "杨庆",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "ava": "^0.18.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-think-node": "^1.0.0",
+    "eslint": "^4.2.0",
+    "eslint-config-think": "^1.0.0",
+    "mongodb": "^3.0.6",
+    "node-notifier": "^5.0.2",
+    "nyc": "^7.0.0"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "getmac": "^1.4.1",
+    "mysql": "^2.15.0",
+    "request": "^2.87.0",
+    "art-template": "^4.12.2",
+    "ejs": "^2.5.9",
+    "koa": "^2.5.0",
+    "koa-art-template": "^1.1.1",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "koa-static": "^4.0.2",
+    "koa-views": "^6.1.4",
+    "mongodb": "^3.0.8"
+  }
 }
