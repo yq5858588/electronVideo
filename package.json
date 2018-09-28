@@ -47,10 +47,9 @@
     "nyc": "^7.0.0"
   },
   "dependencies": {
-    "art-template": "^4.13.1",
+    "art-template": "^4.10.2",
     "cheerio": "^1.0.0-rc.2",
     "ejs": "^2.6.1",
-    "electron": "^3.0.2",
     "getmac": "^1.4.6",
     "koa": "^2.5.3",
     "koa-art-template": "^1.1.1",

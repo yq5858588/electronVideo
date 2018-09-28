@@ -32,7 +32,7 @@ router
             datalist.push(info);
         });
         total = ($(".page_num").text()).match(/共(\d+)条数据/);
-        // console.log(totaltemp);
+        // console.log(total);
         await ctx.render('admin/index/index', {
             list: datalist,
             total: total[1],
