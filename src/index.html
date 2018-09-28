@@ -2,21 +2,20 @@
 <html>
 <head>
   <title>在线视频软件</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=9" />
   <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-  <meta http-equiv="Cache-Control" content="max-age=135000"/>
+  <meta http-equiv="Cache-Control" content="max-age=135000" />
   <link rel="stylesheet" href="../res/layx/layx.min.css">
   <script src="../res/layx/layx.min.js"></script>
   <link href="../res/videojs7.0.3/videojs.css" rel="stylesheet">
   <script src="https://cdn.bootcss.com/video.js/7.0.3/video.js"></script>
   <script src="https://cdn.bootcss.com/video.js/7.0.3/lang/zh-CN.js"></script>
-
   <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
   <script>
     if (typeof module === 'object') {
       window.jQuery = window.$ = module.exports;
-    }
-    ;
+    };
+
   </script>
   <script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
   <script src="https://cdn.bootcss.com/screenfull.js/3.3.0/screenfull.js"></script>
@@ -32,54 +31,29 @@
       background: #000;
     }
     /*播放器设置*/
-
     .video-js {
-      /* The base font size controls the size of everything, not just text.
-All dimensions use em-based sizes so that the scale along with the font size.
-Try increasing it to 15px and see what happens. */
       font-size: 10px;
-      /* The main font color changes the ICON COLORS as well as the text */
       color: #fff;
     }
-    /* The "Big Play Button" is the play button that shows before the video plays.
-To center it set the align values to center and middle. The typical location
-of the button is the center, but there is trend towards moving it to a corner
-where it gets out of the way of valuable content in the poster image.*/
 
     .vjs-sublime-skin .vjs-big-play-button {
-      /* The font size is what makes the big play button...big.
-All width/height values use ems, which are a multiple of the font size.
-If the .video-js font-size is 10px, then 3em equals 30px.*/
       font-size: 8em;
-      /* We're using SCSS vars here because the values are used in multiple places.
-Now that font size is set, the following em values will be a multiple of the
-new font size. If the font-size is 3em (30px), then setting any of
-the following values to 3em would equal 30px. 3 * font-size. */
-      /* 1.5em = 45px default */
       line-height: 1.5em;
       height: 1.5em;
       width: 3em;
-      /* 0.06666em = 2px default */
       border: 0;
-      /* 0.3em = 9px default */
       border-radius: 0.3em;
-      /* Align center */
       left: 50%;
       top: 50%;
       margin-left: -1.5em;
       margin-top: -0.75em;
     }
-    /* The default color of control backgrounds is mostly black but with a little
-bit of blue so it can still be seen on all-black video frames, which are common. */
 
     .video-js .vjs-control-bar, .video-js .vjs-big-play-button, .video-js .vjs-menu-button .vjs-menu-content {
-      /* IE8 - has no alpha support */
       background-color: #2B333F;
-      /* Opacity: 1.0 = 100%, 0.0 = 0% */
       background-color: rgba(43, 51, 63, 0.7);
       background-color: transparent;
     }
-    /* Slider - used for Volume bar and Progress bar */
 
     .video-js .vjs-slider {
       background-color: #73859f;
@@ -88,37 +62,26 @@ bit of blue so it can still be seen on all-black video frames, which are common.
       border-radius: 2px;
       height: 6.5px;
     }
-    /* The slider bar color is used for the progress bar and the volume bar
-(the first two can be removed after a fix that's coming) */
 
     .video-js .vjs-volume-level, .video-js .vjs-play-progress, .video-js .vjs-slider-bar {
       background: #fff;
     }
-    /* Enlarged Slider to enable easier tracking. Adjust all the height:6.5px to preferred height for the slider if necessary. */
-
+    
     .video-js .vjs-progress-holder .vjs-load-progress, .video-js .vjs-progress-holder .vjs-load-progress div, .video-js .vjs-progress-holder .vjs-play-progress, .video-js .vjs-progress-holder .vjs-tooltip-progress-bar {
       height: 6.5px;
     }
-    /* The main progress bar also has a bar that shows how much has been loaded. */
 
     .video-js .vjs-load-progress {
-      /* For IE8 we'll lighten the color */
       background: ligthen(#73859f, 25%);
-      /* Otherwise we'll rely on stacked opacities */
       background: rgba(115, 133, 159, 0.5);
     }
-    /* The load progress bar also has internal divs that represent
-smaller disconnected loaded time ranges */
 
     .video-js .vjs-load-progress div {
-      /* For IE8 we'll lighten the color */
       background: ligthen(#73859f, 50%);
-      /* Otherwise we'll rely on stacked opacities */
       background: rgba(115, 133, 159, 0.75);
     }
     .vjs-sublime-skin .vjs-poster {
       outline: none;
-      /* Remove Blue Outline on Click*/
       outline: 0;
     }
     .vjs-sublime-skin:hover .vjs-big-play-button {
@@ -126,7 +89,6 @@ smaller disconnected loaded time ranges */
     }
     .vjs-sublime-skin .vjs-fullscreen-control:before, .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control:before {
       content: '';
-      /* Remove Fullscreen Exit Icon */
     }
     .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control {
       background: #fff;
@@ -327,6 +289,7 @@ smaller disconnected loaded time ranges */
     var port = '';
     var database = '';
     // require('./renderer.js');
+
   </script>
 </head>
 <body>
@@ -345,12 +308,11 @@ smaller disconnected loaded time ranges */
     </li> -->
   </ul>
   <span style="position:fixed;top:6px;right:50px;-webkit-app-region:no-drag">
-        <img src="../res/set.png" width="15" height="15" alt="" onclick="showRizhi()">
-    </span>
+    <img src="../res/set.png" width="15" height="15" alt="" onclick="showRizhi()">
+  </span>
   <span style="position:fixed;top:6px;right:20px;-webkit-app-region:no-drag">
-        <img src="../res/close.png" width="12" height="12" alt=""
-             onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
-    </span>
+    <img src="../res/close.png" width="12" height="12" alt="" onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
+  </span>
 </div>
 <div id="main">
   <div id="center">
@@ -358,14 +320,11 @@ smaller disconnected loaded time ranges */
       <div class="tab-pane fade " id="home" style="height:100%;border:0px solid red;position: relative;z-index: 11">
         <video id="videoCon" class="video-js  vjs-sublime-skin" controls preload="auto" width="100%" data-setup='{}'>
         </video>
-        <div
-          style="position:fixed;top:70px;left:10px;width:98%;height:calc(100% - 150px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
-        <h4 id="videoMsg"
-            style="display:none;position:fixed;top:50%;left:calc(50% - 40px);background:#000;color:#fff;padding:5px;border-radius:5px;">
+        <div style="position:fixed;top:30px;left:0px;width:100%;height:calc(100% - 60px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
+        <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:calc(50% - 40px);background:#000;color:#fff;padding:5px;border-radius:5px;">
           加载中...</h4>
       </div>
-      <div class="tab-pane fade in active" id="jingpin"
-           style="height:100%;border:0px solid red;background: #fff;display:flex;">
+      <div class="tab-pane fade in active" id="jingpin" style="height:100%;border:0px solid red;background: #fff;display:flex;">
         <div id="yingshileft">
           <div class="yingshileft-child">精品电影</div>
           <div class="yingshileft-child">极速云播</div>
@@ -376,34 +335,22 @@ smaller disconnected loaded time ranges */
         </div>
         <div id="yingshiright">
           <div style="display:block;height:100%;width:100%">
-            <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0"
-                     style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration
-                     disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
+            <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
           </div>
           <div style="display: none;height:100%;width:100%">
-            <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0"
-                     style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on"
-                     autosize="on" plugins="on" allowpopups="on"></webview>
+            <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
           </div>
           <div style="display: none;height:100%;width:100%">
-            <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0"
-                     style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on"
-                     autosize="on" plugins="on" allowpopups="on"></webview>
+            <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
           </div>
           <div style="display: none;height:100%;width:100%">
-            <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0"
-                     style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on"
-                     autosize="on" plugins="on" allowpopups="on"></webview>
+            <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
           </div>
           <div style="display: none;height:100%;width:100%">
-            <webview id="kuboziyuanview" src="http://127.0.0.1:41601/admin/kuboziyuan?typeid=0&page=0"
-                     style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on"
-                     autosize="on" plugins="on" allowpopups="on"></webview>
+            <webview id="kuboziyuanview" src="http://127.0.0.1:41601/admin/kuboziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
           </div>
           <div style="display: none;height:100%;width:100%">
-            <webview id="okziyuanview" src="http://127.0.0.1:41601/admin/okziyuan?typeid=0&page=0"
-                     style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on"
-                     autosize="on" plugins="on" allowpopups="on"></webview>
+            <webview id="okziyuanview" src="http://127.0.0.1:41601/admin/okziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
           </div>
         </div>
       </div>
@@ -424,13 +371,13 @@ smaller disconnected loaded time ranges */
 <script>
   console.log(process);
   require('./koa/app.js');
-  $('.yingshileft-child').click(function () {
+  $('.yingshileft-child').click(function() {
     $(this).parent().next().children().eq($(this).index()).show().siblings().hide();
     $(this).css({
       "background-color": "#fff",
       "color": "#333",
       "border-left": "5px solid #333"
-    }).siblings().css({"background-color": "#333", "color": "#fff"});
+    }).siblings().css({ "background-color": "#333", "color": "#fff" });
   })
   ////////精品资源网
   var webviewjingpin = document.getElementById("jingpinview");
@@ -535,7 +482,7 @@ smaller disconnected loaded time ranges */
     }
   });
   var videoplayer;
-  $(function () {
+  $(function() {
     var options = {
       techOrder: ["html5", "flash", "other supported tech"],
       bigPlayButton: false,
@@ -558,22 +505,22 @@ smaller disconnected loaded time ranges */
       // this.play();
       videoplayer.volume(0.1);
       // How about an event listener?<br>  // 如何使用事件监听？
-      this.on('ended', function () {
+      this.on('ended', function() {
         videojs.log('播放结束了!');
       });
-      this.on('waiting', function () {
+      this.on('waiting', function() {
         console.log('onwaiting执行成功!');
         $("#videoMsg").show();
       });
-      this.on('canplay', function () {
+      this.on('canplay', function() {
         $("#videoMsg").hide();
       });
     });
-    document.addEventListener("fullscreenchange", function () {
+    document.addEventListener("fullscreenchange", function() {
       console.log(document.fullscreen);
       // fullscreenState.innerHTML = (document.fullscreen) ? "" : "not ";
     }, false);
-    document.onkeyup = function (event) { //键盘事件
+    document.onkeyup = function(event) { //键盘事件
       // console.log(video.volume.toFixed(1));
       var e = event || window.event || arguments.callee.caller.arguments[0];
       // console.log(e.keyCode);
@@ -600,7 +547,7 @@ smaller disconnected loaded time ranges */
         videoplayer.currentTime(parseFloat(videoplayer.currentTime() + 30))
       }
     };
-    $('#videoCon').bind('mousewheel', function (event, delta) {
+    $('#videoCon').bind('mousewheel', function(event, delta) {
       var dir = delta > 0 ? 'Up' : 'Down';
       if (dir == 'Up') {
         if (videoplayer.volume().toFixed(1) < 1) {
@@ -639,12 +586,13 @@ smaller disconnected loaded time ranges */
       dragInTopToMax: false,
       event: {
         onload: {
-          after: function (layxWindow, winform) {
+          after: function(layxWindow, winform) {
             layx.max(winform.id);
           }
         }
       }
     });
   }
+
 </script>
 </html>
