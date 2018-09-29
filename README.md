@@ -61,7 +61,7 @@ npm install electron-builder -g  //安装打包环境
 
 electron-builder --version  //查看打包环境版本
 
-electron-builder -w     //打包命令
+electron-builder -w --ia32     //打包命令
 electron-builder -mwl     //打包打包所有平台
 
 
