@@ -1,3 +1,7 @@
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0829/122609_e80313cf_383370.png "TIM截图20190829115917.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0829/122619_f17441fa_383370.png "TIM截图20190829115944.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0829/122628_ba9c4e35_383370.png "TIM截图20190829120000.png")
+![输入图片说明](https://images.gitee.com/uploads/images/2019/0829/122634_2bd3bb56_383370.png "TIM截图20190829120009.png")
 # electronVideo
 # 超人影视5.2.2（2018-09-28）正式发布（更新了底层框架到electron3.0.1）
 ### 更新了底层框架到electron3.0.1
