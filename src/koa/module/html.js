@@ -1,15 +1,14 @@
 var cheerio = require("cheerio");
 var urlPar = require("url");
 var request = require('request');
-
 class Html {
-
     static getInstance() { /*1、单例  多次实例化实例不共享的问题*/
         if (!Html.instance) {
             Html.instance = new Html();
         }
         return Html.instance;
     }
+
     getHtml(url) {
         return new Promise((resolve, reject) => {
             var options = {
@@ -27,8 +26,9 @@ class Html {
             })
         })
     }
-    postHtml(url,requestData){
-        return new Promise((resolve, reject)=>{
+
+    postHtml(url, requestData) {
+        return new Promise((resolve, reject) => {
             var options = {
                 method: "POST",
                 json: true,
@@ -38,17 +38,16 @@ class Html {
                 },
                 form: (requestData)
             };
-            request.post(url,options, function (error, response, body) {
+            request.post(url, options, function (error, response, body) {
                 if (error) {
                     reject(error);
                     return;
-                }                
+                }
                 resolve(body);
             })
         })
     }
 }
-
 module.exports = Html.getInstance();
 /*
 function getDatas() {

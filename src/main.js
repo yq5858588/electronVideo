@@ -16,7 +16,6 @@ let appIcon = null;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow;
-
 /*
 console.log(app.getPath('pepperFlashSystemPlugin'));
 
@@ -32,8 +31,10 @@ function createWindow() {
         height: 558,
         alwaysOnTop: true,
         icon: path.join(__dirname, '../res/icon.ico'),
-        'webPreferences': {
-            'plugins': true
+        webPreferences: {
+            plugins: true,
+            contextIsolation:false,
+            nodeIntegration: true
         }
     })
     mainWindow.loadURL(url.format({
@@ -43,14 +44,14 @@ function createWindow() {
     }))
     appIcon = new Tray(path.join(__dirname, '../res/icon.ico'));
     var contextMenu = Menu.buildFromTemplate([{
-            label: '最大化',
-            type: 'normal',
-            role: 'close',
-            click: function (item, focusedWindow) {
-                mainWindow.maximize();
-                mainWindow.show();
-            }
-        },
+        label: '最大化',
+        type: 'normal',
+        role: 'close',
+        click: function (item, focusedWindow) {
+            mainWindow.maximize();
+            mainWindow.show();
+        }
+    },
         {
             label: '最小化',
             type: 'normal',
@@ -125,7 +126,7 @@ function createWindow() {
         mainWindow = null
     })
 }
-//这个检测方法在4.0以前版本可以使用  
+//这个检测方法在4.0以前版本可以使用
 // const shouldQuit = app.makeSingleInstance((commandLine, workingDirectory) => {
 //     // Someone tried to run a second instance, we should focus our window.
 //     if (mainWindow) {
@@ -137,7 +138,6 @@ function createWindow() {
 //     app.quit()
 // }
 //之后的版本用下面这个代替
-
 const gotTheLock = app.requestSingleInstanceLock()
 if (!gotTheLock) {
     app.quit()
@@ -149,9 +149,9 @@ if (!gotTheLock) {
             mainWindow.focus()
         }
     })
-
     // 创建 mainWindow, 加载应用的其余部分, etc...
-    app.on('ready', () => {})
+    app.on('ready', () => {
+    })
 }
 app.on('ready', createWindow)
 app.on('window-all-closed', function (event) {

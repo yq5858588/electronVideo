@@ -1,599 +1,590 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>在线视频软件</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=9" />
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8">
-  <meta http-equiv="Cache-Control" content="max-age=135000" />
-  <link rel="stylesheet" href="../res/layx/layx.min.css">
-  <script src="../res/layx/layx.min.js"></script>
-  <link href="../res/videojs7.0.3/videojs.css" rel="stylesheet">
-  <script src="https://cdn.bootcss.com/video.js/7.0.3/video.js"></script>
-  <script src="https://cdn.bootcss.com/video.js/7.0.3/lang/zh-CN.js"></script>
-  <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script>
-    if (typeof module === 'object') {
-      window.jQuery = window.$ = module.exports;
-    };
-
-  </script>
-  <script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
-  <script src="https://cdn.bootcss.com/screenfull.js/3.3.0/screenfull.js"></script>
-  <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-    html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      border-radius: 2px;
-      border: 1px solid #2a2a2a;
-      background: #000;
-    }
-    /*播放器设置*/
-    .video-js {
-      font-size: 10px;
-      color: #fff;
-    }
-
-    .vjs-sublime-skin .vjs-big-play-button {
-      font-size: 8em;
-      line-height: 1.5em;
-      height: 1.5em;
-      width: 3em;
-      border: 0;
-      border-radius: 0.3em;
-      left: 50%;
-      top: 50%;
-      margin-left: -1.5em;
-      margin-top: -0.75em;
-    }
-
-    .video-js .vjs-control-bar, .video-js .vjs-big-play-button, .video-js .vjs-menu-button .vjs-menu-content {
-      background-color: #2B333F;
-      background-color: rgba(43, 51, 63, 0.7);
-      background-color: transparent;
-    }
-
-    .video-js .vjs-slider {
-      background-color: #73859f;
-      background-color: rgba(115, 133, 159, 0.5);
-      background-color: rgba(255, 255, 255, 0.3);
-      border-radius: 2px;
-      height: 6.5px;
-    }
-
-    .video-js .vjs-volume-level, .video-js .vjs-play-progress, .video-js .vjs-slider-bar {
-      background: #fff;
-    }
-    
-    .video-js .vjs-progress-holder .vjs-load-progress, .video-js .vjs-progress-holder .vjs-load-progress div, .video-js .vjs-progress-holder .vjs-play-progress, .video-js .vjs-progress-holder .vjs-tooltip-progress-bar {
-      height: 6.5px;
-    }
-
-    .video-js .vjs-load-progress {
-      background: ligthen(#73859f, 25%);
-      background: rgba(115, 133, 159, 0.5);
-    }
-
-    .video-js .vjs-load-progress div {
-      background: ligthen(#73859f, 50%);
-      background: rgba(115, 133, 159, 0.75);
-    }
-    .vjs-sublime-skin .vjs-poster {
-      outline: none;
-      outline: 0;
-    }
-    .vjs-sublime-skin:hover .vjs-big-play-button {
-      background-color: transparent;
-    }
-    .vjs-sublime-skin .vjs-fullscreen-control:before, .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control:before {
-      content: '';
-    }
-    .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control {
-      background: #fff;
-    }
-    .vjs-sublime-skin .vjs-fullscreen-control {
-      border: 3px solid #fff;
-      box-sizing: border-box;
-      cursor: pointer;
-      margin-top: -7px;
-      top: 50%;
-      height: 14px;
-      width: 22px;
-      margin-right: 10px;
-    }
-    .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control:after {
-      background: #000;
-      content: "";
-      display: block;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      height: 5px;
-      width: 5px;
-    }
-    .vjs-sublime-skin .vjs-progress-holder {
-      margin: 0;
-    }
-    .vjs-sublime-skin .vjs-progress-control .vjs-progress-holder:after {
-      border-radius: 2px;
-      display: block;
-      height: 6.5px;
-    }
-    .vjs-sublime-skin .vjs-progress-control .vjs-load-progres, .vjs-sublime-skin .vjs-progress-control .vjs-play-progress {
-      border-radius: 2px;
-      height: 6.5px;
-    }
-    .vjs-sublime-skin .vjs-playback-rate {
-      display: none;
-      /* Remove Playback Rate */
-    }
-    .vjs-sublime-skin .vjs-progress-control {
-      margin-right: 50px;
-    }
-    .vjs-sublime-skin .vjs-time-control {
-      right: 55px;
-    }
-    .vjs-sublime-skin .vjs-volume-menu-button:before {
-      width: 1.2em;
-      z-index: 1;
-    }
-    .vjs-sublime-skin .vjs-volume-menu-button .vjs-menu, .vjs-sublime-skin .vjs-volume-menu-button:focus .vjs-menu, .vjs-sublime-skin .vjs-volume-menu-button.vjs-slider-active .vjs-menu {
-      display: block;
-      opacity: 1;
-    }
-    .vjs-sublime-skin .vjs-volume-menu-button, .vjs-sublime-skin .vjs-volume-panel {
-      width: 6em;
-      position: absolute;
-      right: 0;
-      margin-right: 30px;
-    }
-    .vjs-sublime-skin .vjs-volume-menu-button .vjs-menu-content, .vjs-sublime-skin .vjs-volume-menu-button:hover, .vjs-sublime-skin .vjs-volume-menu-button:focus, .vjs-sublime-skin .vjs-volume-menu-button.vjs-slider-active, .vjs-sublime-skin .vjs-volume-panel .vjs-volume-control, .vjs-sublime-skin .vjs-volume-panel:hover, .vjs-sublime-skin .vjs-volume-panel:focus, .vjs-sublime-skin .vjs-volume-panel.vjs-slider-active {
-      width: 6em;
-    }
-    .vjs-sublime-skin .vjs-volume-menu-button .vjs-menu {
-      left: 23px;
-    }
-    .vjs-sublime-skin .vjs-mouse-display:before, .vjs-sublime-skin .vjs-play-progress:before, .vjs-sublime-skin .vjs-volume-level:before {
-      content: '';
-      /* Remove Circle From Progress Bar */
-    }
-    .vjs-sublime-skin .vjs-mouse-display:after, .vjs-sublime-skin .vjs-play-progress:after, .vjs-sublime-skin .vjs-time-tooltip {
-      width: 5.5em;
-    }
-    .vjs-sublime-skin .vjs-audio-button {
-      display: none;
-    }
-    .vjs-sublime-skin .vjs-volume-bar {
-      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAcCAQAAACw95UnAAAAMElEQVRIx2NgoBL4n4YKGUYNHkEG4zJg1OCRYDCpBowaPJwMppbLRg0eNXjUYBLEAXWNUA6QNm1lAAAAAElFTkSuQmCC);
-      background-size: 22px 14px;
-      background-repeat: no-repeat;
-      height: 100%;
-      width: 100%;
-      max-width: 22px;
-      max-height: 14px;
-      margin: 7px 4px;
-      border-radius: 0;
-    }
-    .vjs-sublime-skin .vjs-volume-level {
-      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAcAQAAAAAyhWABAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBYwAB/g9EUv+JokCqiaT+U4MCAPKPS7WUUOc1AAAAAElFTkSuQmCC);
-      background-size: 22px 14px;
-      background-repeat: no-repeat;
-      max-width: 22px;
-      max-height: 14px;
-      height: 100%;
-    }
-    /* New for VideoJS v6 */
-
-    .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active, .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal:active, .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal:focus, .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal:hover {
-      width: 6em;
-      transition-property: none;
-    }
-    .vjs-sublime-skin .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-horizontal {
-      width: 3em;
-      height: auto;
-    }
-    .vjs-sublime-skin .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control {
-      transition-property: none;
-    }
-    .vjs-sublime-skin .vjs-fullscreen-control .vjs-icon-placeholder {
-      display: none;
-      /* Remove Duplicate Fullscreen Icon */
-    }
-    .vjs-sublime-skin .vjs-volume-panel .vjs-mute-control {
-      width: 2em;
-      z-index: 1;
-      padding: 0;
-    }
-    .vjs-sublime-skin .vjs-volume-panel .vjs-volume-control {
-      display: inline-block;
-      position: relative;
-      left: 5px;
-      opacity: 1;
-      width: 3em;
-      height: auto;
-    }
-    /*播放器*/
-
-    #myTab {
-      max-height: 30px;
-      min-height: 30px;
-      background: #2a2a2a;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #2a2a2a;
-    }
-    .nav > li > a {
-      color: #fff;
-      padding: 2px 10px;
-    }
-    .nav > li.active > a:hover {
-      color: #555 !important;
-      cursor: default;
-      background-color: #fff;
-    }
-    #main {
-      height: calc(100% - 30px);
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      background: #2a2a2a;
-      overflow: hidden
-    }
-    #right {
-      height: 100%;
-      max-width: 150px;
-      min-width: 150px;
-      color: #aaa;
-      background-color: #666
-    }
-    #center {
-      height: 100%;
-      width: calc(100% - 0px);
-      background-color: #000
-    }
-    #yingshileft {
-      border: 0px solid red;
-      background: #333;
-      color: #fff;
-      width: 80px;
-      height: 100%;
-      overflow: auto;-webkit-app-region:drag
-    }
-    #yingshileft > div {
-      height: 50px;
-      line-height: 50px;
-      padding: 5px;
-      border-bottom: 1px solid #ddd;
-      -webkit-app-region:no-drag
-    }
-    #yingshileft > div:hover {
-      background: #fff;
-      color: #333;
-      height: 50px;
-      line-height: 50px;
-      border-left: 5px solid #333;
-    }
-    #yingshiright {
-      border: 0px solid red;
-      width: 100%;
-    }
-  </style>
-  <script type="text/javascript">
-    // var dbmysql = require('./utils/mysqleasy.js');
-    var type = '';
-    var address = '';
-    var user = '';
-    var pass = '';
-    var port = '';
-    var database = '';
-    // require('./renderer.js');
-
-  </script>
+    <title>在线视频软件</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="Cache-Control" content="max-age=135000"/>
+    <link rel="stylesheet" href="../res/layx/layx.min.css">
+    <script src="../res/layx/layx.min.js"></script>
+    <link href="../res/videojs7.0.3/videojs.css" rel="stylesheet">
+    <script src="https://cdn.bootcss.com/video.js/7.0.3/video.js"></script>
+    <script src="https://cdn.bootcss.com/video.js/7.0.3/lang/zh-CN.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+        if (typeof module === 'object') {
+            window.jQuery = window.$ = module.exports;
+        }
+        ;
+    </script>
+    <script src="https://cdn.bootcss.com/jquery-mousewheel/3.1.13/jquery.mousewheel.min.js"></script>
+    <script src="https://cdn.bootcss.com/screenfull.js/3.3.0/screenfull.js"></script>
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            border-radius: 15px;
+            border: 0px solid #2a2a2a;
+            background: #000;
+        }
+        /*播放器设置*/
+        .video-js {
+            font-size: 10px;
+            color: #fff;
+        }
+        .vjs-sublime-skin .vjs-big-play-button {
+            font-size: 8em;
+            line-height: 1.5em;
+            height: 1.5em;
+            width: 3em;
+            border: 0;
+            border-radius: 0.3em;
+            left: 50%;
+            top: 50%;
+            margin-left: -1.5em;
+            margin-top: -0.75em;
+        }
+        .video-js .vjs-control-bar, .video-js .vjs-big-play-button, .video-js .vjs-menu-button .vjs-menu-content {
+            background-color: #2B333F;
+            background-color: rgba(43, 51, 63, 0.7);
+            background-color: transparent;
+        }
+        .video-js .vjs-slider {
+            background-color: #73859f;
+            background-color: rgba(115, 133, 159, 0.5);
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            height: 6.5px;
+        }
+        .video-js .vjs-volume-level, .video-js .vjs-play-progress, .video-js .vjs-slider-bar {
+            background: #fff;
+        }
+        .video-js .vjs-progress-holder .vjs-load-progress, .video-js .vjs-progress-holder .vjs-load-progress div, .video-js .vjs-progress-holder .vjs-play-progress, .video-js .vjs-progress-holder .vjs-tooltip-progress-bar {
+            height: 6.5px;
+        }
+        .video-js .vjs-load-progress {
+            background: ligthen(#73859f, 25%);
+            background: rgba(115, 133, 159, 0.5);
+        }
+        .video-js .vjs-load-progress div {
+            background: ligthen(#73859f, 50%);
+            background: rgba(115, 133, 159, 0.75);
+        }
+        .vjs-sublime-skin .vjs-poster {
+            outline: none;
+            outline: 0;
+        }
+        .vjs-sublime-skin:hover .vjs-big-play-button {
+            background-color: transparent;
+        }
+        .vjs-sublime-skin .vjs-fullscreen-control:before, .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control:before {
+            content: '';
+        }
+        .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control {
+            background: #fff;
+        }
+        .vjs-sublime-skin .vjs-fullscreen-control {
+            border: 3px solid #fff;
+            box-sizing: border-box;
+            cursor: pointer;
+            margin-top: -7px;
+            top: 50%;
+            height: 14px;
+            width: 22px;
+            margin-right: 10px;
+        }
+        .vjs-sublime-skin.vjs-fullscreen .vjs-fullscreen-control:after {
+            background: #000;
+            content: "";
+            display: block;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 5px;
+            width: 5px;
+        }
+        .vjs-sublime-skin .vjs-progress-holder {
+            margin: 0;
+        }
+        .vjs-sublime-skin .vjs-progress-control .vjs-progress-holder:after {
+            border-radius: 2px;
+            display: block;
+            height: 6.5px;
+        }
+        .vjs-sublime-skin .vjs-progress-control .vjs-load-progres, .vjs-sublime-skin .vjs-progress-control .vjs-play-progress {
+            border-radius: 2px;
+            height: 6.5px;
+        }
+        .vjs-sublime-skin .vjs-playback-rate {
+            display: none;
+            /* Remove Playback Rate */
+        }
+        .vjs-sublime-skin .vjs-progress-control {
+            margin-right: 50px;
+        }
+        .vjs-sublime-skin .vjs-time-control {
+            right: 55px;
+        }
+        .vjs-sublime-skin .vjs-volume-menu-button:before {
+            width: 1.2em;
+            z-index: 1;
+        }
+        .vjs-sublime-skin .vjs-volume-menu-button .vjs-menu, .vjs-sublime-skin .vjs-volume-menu-button:focus .vjs-menu, .vjs-sublime-skin .vjs-volume-menu-button.vjs-slider-active .vjs-menu {
+            display: block;
+            opacity: 1;
+        }
+        .vjs-sublime-skin .vjs-volume-menu-button, .vjs-sublime-skin .vjs-volume-panel {
+            width: 6em;
+            position: absolute;
+            right: 0;
+            margin-right: 30px;
+        }
+        .vjs-sublime-skin .vjs-volume-menu-button .vjs-menu-content, .vjs-sublime-skin .vjs-volume-menu-button:hover, .vjs-sublime-skin .vjs-volume-menu-button:focus, .vjs-sublime-skin .vjs-volume-menu-button.vjs-slider-active, .vjs-sublime-skin .vjs-volume-panel .vjs-volume-control, .vjs-sublime-skin .vjs-volume-panel:hover, .vjs-sublime-skin .vjs-volume-panel:focus, .vjs-sublime-skin .vjs-volume-panel.vjs-slider-active {
+            width: 6em;
+        }
+        .vjs-sublime-skin .vjs-volume-menu-button .vjs-menu {
+            left: 23px;
+        }
+        .vjs-sublime-skin .vjs-mouse-display:before, .vjs-sublime-skin .vjs-play-progress:before, .vjs-sublime-skin .vjs-volume-level:before {
+            content: '';
+            /* Remove Circle From Progress Bar */
+        }
+        .vjs-sublime-skin .vjs-mouse-display:after, .vjs-sublime-skin .vjs-play-progress:after, .vjs-sublime-skin .vjs-time-tooltip {
+            width: 5.5em;
+        }
+        .vjs-sublime-skin .vjs-audio-button {
+            display: none;
+        }
+        .vjs-sublime-skin .vjs-volume-bar {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAcCAQAAACw95UnAAAAMElEQVRIx2NgoBL4n4YKGUYNHkEG4zJg1OCRYDCpBowaPJwMppbLRg0eNXjUYBLEAXWNUA6QNm1lAAAAAElFTkSuQmCC);
+            background-size: 22px 14px;
+            background-repeat: no-repeat;
+            height: 100%;
+            width: 100%;
+            max-width: 22px;
+            max-height: 14px;
+            margin: 7px 4px;
+            border-radius: 0;
+        }
+        .vjs-sublime-skin .vjs-volume-level {
+            background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAcAQAAAAAyhWABAAAAAnRSTlMAAHaTzTgAAAAZSURBVHgBYwAB/g9EUv+JokCqiaT+U4MCAPKPS7WUUOc1AAAAAElFTkSuQmCC);
+            background-size: 22px 14px;
+            background-repeat: no-repeat;
+            max-width: 22px;
+            max-height: 14px;
+            height: 100%;
+        }
+        /* New for VideoJS v6 */
+        .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal.vjs-slider-active, .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal:active, .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal:focus, .vjs-sublime-skin .vjs-volume-panel.vjs-volume-panel-horizontal:hover {
+            width: 6em;
+            transition-property: none;
+        }
+        .vjs-sublime-skin .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control.vjs-volume-horizontal {
+            width: 3em;
+            height: auto;
+        }
+        .vjs-sublime-skin .vjs-volume-panel .vjs-mute-control:hover ~ .vjs-volume-control {
+            transition-property: none;
+        }
+        .vjs-sublime-skin .vjs-fullscreen-control .vjs-icon-placeholder {
+            display: none;
+            /* Remove Duplicate Fullscreen Icon */
+        }
+        .vjs-sublime-skin .vjs-volume-panel .vjs-mute-control {
+            width: 2em;
+            z-index: 1;
+            padding: 0;
+        }
+        .vjs-sublime-skin .vjs-volume-panel .vjs-volume-control {
+            display: inline-block;
+            position: relative;
+            left: 5px;
+            opacity: 1;
+            width: 3em;
+            height: auto;
+        }
+        /*播放器*/
+        #myTab {
+            max-height: 30px;
+            min-height: 30px;
+            background: #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #2a2a2a;
+        }
+        .nav > li > a {
+            color: #fff;
+            padding: 2px 10px;
+        }
+        .nav > li.active > a:hover {
+            color: #555 !important;
+            cursor: default;
+            background-color: #fff;
+        }
+        #main {
+            height: calc(100% - 30px);
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            background: #2a2a2a;
+            overflow: hidden
+        }
+        #right {
+            height: 100%;
+            max-width: 150px;
+            min-width: 150px;
+            color: #aaa;
+            background-color: #666
+        }
+        #center {
+            height: 100%;
+            width: calc(100% - 0px);
+            background-color: #000
+        }
+        #yingshileft {
+            border: 0px solid red;
+            background: #333;
+            color: #fff;
+            width: 80px;
+            height: 100%;
+            overflow: auto;
+            -webkit-app-region: drag
+        }
+        #yingshileft > div {
+            height: 50px;
+            line-height: 50px;
+            padding: 5px;
+            border-bottom: 1px solid #ddd;
+            -webkit-app-region: no-drag
+        }
+        #yingshileft > div:hover {
+            background: #fff;
+            color: #333;
+            height: 50px;
+            line-height: 50px;
+            border-left: 5px solid #333;
+        }
+        #yingshiright {
+            border: 0px solid red;
+            width: 100%;
+        }
+    </style>
+    <script type="text/javascript">
+        // var dbmysql = require('./utils/mysqleasy.js');
+        var type = '';
+        var address = '';
+        var user = '';
+        var pass = '';
+        var port = '';
+        var database = '';
+        // require('./renderer.js');
+    </script>
 </head>
 <body>
 <h4 id="vediotitle" style="position:fixed;top:-0px;left:10px;color:#fff;height:25px;font-size:12px">标题</h4>
 <div id="top" style="-webkit-app-region:drag" style="position: relative;">
-  <ul id="myTab" class="nav nav-tabs">
-    <li style="-webkit-app-region:no-drag"><a href="#home" data-toggle="tab">播放器</a></li>
-    <li style="-webkit-app-region:no-drag" class="active"><a href="#jingpin" data-toggle="tab">影视大全</a></li>
-    <!-- <li class="dropdown" style="-webkit-app-region:no-drag">
-        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
-        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
-            <li><a href="#jisuyunbo" tabindex="-1" data-toggle="tab">极速云播</a></li>
-            <li><a href="#yongjiuyun" tabindex="-1" data-toggle="tab">永久云</a></li>
-            <li><a href="#zuidaziyuan" tabindex="-1" data-toggle="tab">最大资源</a></li>
-        </ul>
-    </li> -->
-  </ul>
-  <span style="position:fixed;top:6px;right:50px;-webkit-app-region:no-drag">
+    <ul id="myTab" class="nav nav-tabs">
+        <li style="-webkit-app-region:no-drag">
+            <a href="#home" data-toggle="tab">播放器</a>
+        </li>
+        <li style="-webkit-app-region:no-drag" class="active">
+            <a href="#jingpin" data-toggle="tab">影视大全</a>
+        </li>
+        <!-- <li class="dropdown" style="-webkit-app-region:no-drag">
+            <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">更多<b class="caret"></b></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+                <li><a href="#jisuyunbo" tabindex="-1" data-toggle="tab">极速云播</a></li>
+                <li><a href="#yongjiuyun" tabindex="-1" data-toggle="tab">永久云</a></li>
+                <li><a href="#zuidaziyuan" tabindex="-1" data-toggle="tab">最大资源</a></li>
+            </ul>
+        </li> -->
+    </ul>
+    <span style="position:fixed;top:6px;right:50px;-webkit-app-region:no-drag">
     <img src="../res/set.png" width="15" height="15" alt="" onclick="showRizhi()">
   </span>
-  <span style="position:fixed;top:6px;right:20px;-webkit-app-region:no-drag">
+    <span style="position:fixed;top:6px;right:20px;-webkit-app-region:no-drag">
     <img src="../res/close.png" width="12" height="12" alt="" onclick="var ipc = require('electron').ipcRenderer;ipc.send('window-close');">
   </span>
 </div>
 <div id="main">
-  <div id="center">
-    <div id="myTabContent" class="tab-content" style="height:calc(100% - 0px);border:0px solid red">
-      <div class="tab-pane fade " id="home" style="height:100%;border:0px solid red;position: relative;z-index: 11">
-        <video id="videoCon" class="video-js  vjs-sublime-skin" controls preload="auto" width="100%" data-setup='{}'>
-        </video>
-        <div style="position:fixed;top:30px;left:0px;width:100%;height:calc(100% - 60px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
-        <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:calc(50% - 40px);background:#000;color:#fff;padding:5px;border-radius:5px;">
-          加载中...</h4>
-      </div>
-      <div class="tab-pane fade in active" id="jingpin" style="height:100%;border:0px solid red;background: #fff;display:flex;">
-        <div id="yingshileft">
-          <div class="yingshileft-child">精品电影</div>
-          <div class="yingshileft-child">极速云播</div>
-          <div class="yingshileft-child">永久云</div>
-          <div class="yingshileft-child">最大资源</div>
-          <div class="yingshileft-child">酷播资源</div>
-          <div class="yingshileft-child">OK资源</div>
+    <div id="center">
+        <div id="myTabContent" class="tab-content" style="height:calc(100% - 0px);border:0px solid red">
+            <div class="tab-pane fade " id="home" style="height:100%;border:0px solid red;position: relative;z-index: 11">
+                <video id="videoCon" class="video-js  vjs-sublime-skin" controls preload="auto" width="100%" data-setup='{}'>
+                </video>
+                <div style="position:fixed;top:30px;left:0px;width:100%;height:calc(100% - 60px);background:#ddd;opacity:0;-webkit-app-region:drag"></div>
+                <h4 id="videoMsg" style="display:none;position:fixed;top:50%;left:calc(50% - 40px);background:#000;color:#fff;padding:5px;border-radius:5px;">
+                    加载中...</h4>
+            </div>
+            <div class="tab-pane fade in active" id="jingpin" style="height:100%;border:0px solid red;background: #fff;display:flex;">
+                <div id="yingshileft">
+                    <div class="yingshileft-child">精品电影</div>
+                    <div class="yingshileft-child">极速云播</div>
+                    <div class="yingshileft-child">永久云</div>
+                    <div class="yingshileft-child">最大资源</div>
+                    <div class="yingshileft-child">酷播资源</div>
+                    <div class="yingshileft-child">OK资源</div>
+                </div>
+                <div id="yingshiright">
+                    <div style="display:block;height:100%;width:100%">
+                        <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                        <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                        <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                        <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                        <webview id="kuboziyuanview" src="http://127.0.0.1:41601/admin/kuboziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                    <div style="display: none;height:100%;width:100%">
+                        <webview id="okziyuanview" src="http://127.0.0.1:41601/admin/okziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="tab-pane fade" id="jisuyunbo" style="height:100%;border:0px solid red">
+            </div> -->
         </div>
-        <div id="yingshiright">
-          <div style="display:block;height:100%;width:100%">
-            <webview id="jingpinview" src="http://127.0.0.1:41601/admin/index?typeid=0&page=0" style="height:100%;border:0px solid red;" httpreferrer="www.jingpinzy.com" nodeintegration disablewebsecurity="on" autosize="on" plugins="on" allowpopups="on"></webview>
-          </div>
-          <div style="display: none;height:100%;width:100%">
-            <webview id="jisuyunboview" src="http://127.0.0.1:41601/admin/jisuyunbo?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-          </div>
-          <div style="display: none;height:100%;width:100%">
-            <webview id="yongjiuyunview" src="http://127.0.0.1:41601/admin/yongjiuyun?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-          </div>
-          <div style="display: none;height:100%;width:100%">
-            <webview id="zuidaziyuanview" src="http://127.0.0.1:41601/admin/zuidaziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-          </div>
-          <div style="display: none;height:100%;width:100%">
-            <webview id="kuboziyuanview" src="http://127.0.0.1:41601/admin/kuboziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-          </div>
-          <div style="display: none;height:100%;width:100%">
-            <webview id="okziyuanview" src="http://127.0.0.1:41601/admin/okziyuan?typeid=0&page=0" style="height:100%;border:0px solid red;" nodeintegration disablewebsecurity="on" autosize="on" autosize="on" plugins="on" allowpopups="on"></webview>
-          </div>
-        </div>
-      </div>
-      <!-- <div class="tab-pane fade" id="jisuyunbo" style="height:100%;border:0px solid red">
-      </div> -->
     </div>
-  </div>
-  <!-- <div id="right">
-      <h4 id="window-haoyou">播放列表</h4>
-      <div id="window-haoyou-reply">msg</div>
-      <ul>
-          <li></li>
-          <li></li>
-      </ul>
-  </div> -->
+    <!-- <div id="right">
+        <h4 id="window-haoyou">播放列表</h4>
+        <div id="window-haoyou-reply">msg</div>
+        <ul>
+            <li></li>
+            <li></li>
+        </ul>
+    </div> -->
 </div>
 </body>
 <script>
-  console.log(process);
-  require('./koa/app.js');
-  $('.yingshileft-child').click(function() {
-    $(this).parent().next().children().eq($(this).index()).show().siblings().hide();
-    $(this).css({
-      "background-color": "#fff",
-      "color": "#333",
-      "border-left": "5px solid #333"
-    }).siblings().css({ "background-color": "#333", "color": "#fff" });
-  })
-  ////////精品资源网
-  var webviewjingpin = document.getElementById("jingpinview");
-  // webviewjingpin.addEventListener("did-start-loading", () => {
-  //     webviewjingpin.openDevTools({ mode: 'detach' });
-  // });
-  /*var webview = document.getElementById("foohome");
-  webview.addEventListener('dom-ready', () => {
-      console.log("URL地址为：" + webview.getURL());
-      const webContents = webview.getWebContents();
-      webContents.on('new-window', (event, url) => {
-          event.preventDefault();
-          webview.loadURL(url);
-      });
-  });
-  webview.addEventListener('console-message', e => {
-      console.log('webview: ' + e.message);
-  });*/
-  webviewjingpin.addEventListener('console-message', e => {
-    // console.log('播放地址为: ' + e.message);
-    let url = e.message.split("|")[0];
-    let title = e.message.split("|")[1];
-    console.log(title + url);
-    if (url.indexOf(".m3u8") > 0) {
-      playVideo(url);
-      $("#vediotitle").text(title);
-    }
-  });
-  ///////////极速云播
-  var webviewjisuyunbo = document.getElementById("jisuyunboview");
-  // webviewjisuyunbo.addEventListener("did-start-loading", () => {
-  //     webviewjisuyunbo.openDevTools({ mode: 'detach' });
-  // });
-  webviewjisuyunbo.addEventListener('console-message', e => {
-    // console.log('播放地址为: ' + e.message);
-    let url = e.message.split("|")[0];
-    let title = e.message.split("|")[1];
-    console.log(title + url);
-    if (url.indexOf(".m3u8") > 0) {
-      playVideo(url);
-      $("#vediotitle").text(title);
-    }
-  });
-  ///////////永久云
-  var webviewyongjiuyun = document.getElementById("yongjiuyunview");
-  // webviewyongjiuyun.addEventListener("did-start-loading", () => {
-  //     webviewyongjiuyun.openDevTools({ mode: 'detach' });
-  // });
-  webviewyongjiuyun.addEventListener('console-message', e => {
-    // console.log('播放地址为: ' + e.message);
-    let url = e.message.split("|")[0];
-    let title = e.message.split("|")[1];
-    console.log(title + url);
-    if (url.indexOf(".m3u8") > 0) {
-      playVideo(url);
-      $("#vediotitle").text(title);
-    }
-  });
-  ///////////最大资源
-  var webviewzuidaziyuan = document.getElementById("zuidaziyuanview");
-  // webviewzuidaziyuan.addEventListener("did-start-loading", () => {
-  //     webviewzuidaziyuan.openDevTools({ mode: 'detach' });
-  // });
-  webviewzuidaziyuan.addEventListener('console-message', e => {
-    // console.log('播放地址为: ' + e.message);
-    let url = e.message.split("|")[0];
-    let title = e.message.split("|")[1];
-    console.log(title + url);
-    if (url.indexOf(".m3u8") > 0) {
-      playVideo(url);
-      $("#vediotitle").text(title);
-    }
-  });
-  ///////////酷播资源
-  var webviewkuboziyuan = document.getElementById("kuboziyuanview");
-  // webviewkuboziyuan.addEventListener("did-start-loading", () => {
-  //     webviewkuboziyuan.openDevTools({ mode: 'detach' });
-  // });
-  webviewkuboziyuan.addEventListener('console-message', e => {
-    // console.log('播放地址为: ' + e.message);
-    let url = e.message.split("|")[0];
-    let title = e.message.split("|")[1];
-    console.log(title + url);
-    if (url.indexOf(".m3u8") > 0) {
-      playVideo(url);
-      $("#vediotitle").text(title);
-    }
-  });
-  ///////////OK资源
-  var webviewokziyuan = document.getElementById("okziyuanview");
-  // webviewokziyuan.addEventListener("did-start-loading", () => {
-  //     webviewokziyuan.openDevTools({ mode: 'detach' });
-  // });
-  webviewokziyuan.addEventListener('console-message', e => {
-    // console.log('播放地址为: ' + e.message);
-    let url = e.message.split("|")[0];
-    let title = e.message.split("|")[1];
-    console.log(title + url);
-    if (url.indexOf(".m3u8") > 0) {
-      playVideo(url);
-      $("#vediotitle").text(title);
-    }
-  });
-  var videoplayer;
-  $(function() {
-    var options = {
-      techOrder: ["html5", "flash", "other supported tech"],
-      bigPlayButton: false,
-      textTrackDisplay: false,
-      posterImage: false,
-      errorDisplay: false,
-      control: {
-        captionsButton: false,
-        chaptersButton: false,
-        subtitlesButton: false,
-        liveDisplay: false,
-        playbackRateMenuButton: false
-      }
-    }
-    videoplayer = videojs('videoCon', options, function onPlayerReady() {
-      // videojs.log('播放器已经准备好了!');
-      // In this context, `this` is the player that was created by Video.js.<br>  // 注意，这个地方的上下文， `this` 指向的是Video.js的实例对像player
-      // this.src("http://youku.com-youku.com/20180317/LhrheHJk/index.m3u8");
-      // this.load();
-      // this.play();
-      videoplayer.volume(0.1);
-      // How about an event listener?<br>  // 如何使用事件监听？
-      this.on('ended', function() {
-        videojs.log('播放结束了!');
-      });
-      this.on('waiting', function() {
-        console.log('onwaiting执行成功!');
-        $("#videoMsg").show();
-      });
-      this.on('canplay', function() {
-        $("#videoMsg").hide();
-      });
+    console.log(process);
+    // require('./koa/app.js');
+    $('.yingshileft-child').click(function () {
+        $(this).parent().next().children().eq($(this).index()).show().siblings().hide();
+        $(this).css({
+            "background-color": "#fff",
+            "color": "#333",
+            "border-left": "5px solid #333"
+        }).siblings().css({ "background-color": "#333", "color": "#fff" });
+    })
+    ////////精品资源网
+    var webviewjingpin = document.getElementById("jingpinview");
+    // webviewjingpin.addEventListener("did-start-loading", () => {
+    //     webviewjingpin.openDevTools({ mode: 'detach' });
+    // });
+    /*var webview = document.getElementById("foohome");
+    webview.addEventListener('dom-ready', () => {
+        console.log("URL地址为：" + webview.getURL());
+        const webContents = webview.getWebContents();
+        webContents.on('new-window', (event, url) => {
+            event.preventDefault();
+            webview.loadURL(url);
+        });
     });
-    document.addEventListener("fullscreenchange", function() {
-      console.log(document.fullscreen);
-      // fullscreenState.innerHTML = (document.fullscreen) ? "" : "not ";
-    }, false);
-    document.onkeyup = function(event) { //键盘事件
-      // console.log(video.volume.toFixed(1));
-      var e = event || window.event || arguments.callee.caller.arguments[0];
-      // console.log(e.keyCode);
-      if (e && e.keyCode == 13) { // 按enter键
-        // toggleFullScreen();
-        // document.getElementById('videoCon').requestFullScreen();
-        // document.requestFullscreen();
-        // videoplayer.enterFullScreen();
-      }
-      if (e && e.keyCode == 38) { // 按 向上键
-        if (videoplayer.volume().toFixed(1) < 1) {
-          videoplayer.volume(videoplayer.volume() + 0.1);
+    webview.addEventListener('console-message', e => {
+        console.log('webview: ' + e.message);
+    });*/
+    webviewjingpin.addEventListener('console-message', e => {
+        // console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
         }
-      }
-      if (e && e.keyCode == 40) { // 按 向下键
-        if (videoplayer.volume().toFixed(1) > 0) {
-          videoplayer.volume(videoplayer.volume() - 0.1);
-        }
-      }
-      if (e && e.keyCode == 37) { // 按 向左键
-        videoplayer.currentTime(parseFloat(videoplayer.currentTime() - 30))
-      }
-      if (e && e.keyCode == 39) { // 按 向右键
-        videoplayer.currentTime(parseFloat(videoplayer.currentTime() + 30))
-      }
-    };
-    $('#videoCon').bind('mousewheel', function(event, delta) {
-      var dir = delta > 0 ? 'Up' : 'Down';
-      if (dir == 'Up') {
-        if (videoplayer.volume().toFixed(1) < 1) {
-          videoplayer.volume(videoplayer.volume() + 0.1);
-        }
-      } else {
-        if (videoplayer.volume().toFixed(1) > 0) {
-          videoplayer.volume(videoplayer.volume() - 0.1);
-        }
-      }
     });
-  })
-
-  function playVideo(url) {
-    $('#myTab a[href="#home"]').tab('show');
-    videoplayer.src(encodeURI(url));
-    videoplayer.load();
-    // player.width(300).height(200);
-    videoplayer.play();
-  }
-
-  function pausePlay() {
-    videoplayer.pause();
-  }
-
-  function showRizhi() {
-    layx.iframe('localsite', '更新日志', 'rizhi.html', {
-      type: 'url',
-      useFrameTitle: true,
-      movable: false,
-      minMenu: false,
-      maxMenu: false,
-      // minWidth:50,
-      // minHeight:50,
-      // width:100,
-      dragInTopToMax: false,
-      event: {
-        onload: {
-          after: function(layxWindow, winform) {
-            layx.max(winform.id);
-          }
+    ///////////极速云播
+    var webviewjisuyunbo = document.getElementById("jisuyunboview");
+    // webviewjisuyunbo.addEventListener("did-start-loading", () => {
+    //     webviewjisuyunbo.openDevTools({ mode: 'detach' });
+    // });
+    webviewjisuyunbo.addEventListener('console-message', e => {
+        // console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
         }
-      }
     });
-  }
-
+    ///////////永久云
+    var webviewyongjiuyun = document.getElementById("yongjiuyunview");
+    // webviewyongjiuyun.addEventListener("did-start-loading", () => {
+    //     webviewyongjiuyun.openDevTools({ mode: 'detach' });
+    // });
+    webviewyongjiuyun.addEventListener('console-message', e => {
+        // console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
+        }
+    });
+    ///////////最大资源
+    var webviewzuidaziyuan = document.getElementById("zuidaziyuanview");
+    // webviewzuidaziyuan.addEventListener("did-start-loading", () => {
+    //     webviewzuidaziyuan.openDevTools({ mode: 'detach' });
+    // });
+    webviewzuidaziyuan.addEventListener('console-message', e => {
+        // console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
+        }
+    });
+    ///////////酷播资源
+    var webviewkuboziyuan = document.getElementById("kuboziyuanview");
+    // webviewkuboziyuan.addEventListener("did-start-loading", () => {
+    //     webviewkuboziyuan.openDevTools({ mode: 'detach' });
+    // });
+    webviewkuboziyuan.addEventListener('console-message', e => {
+        // console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
+        }
+    });
+    ///////////OK资源
+    var webviewokziyuan = document.getElementById("okziyuanview");
+    // webviewokziyuan.addEventListener("did-start-loading", () => {
+    //     webviewokziyuan.openDevTools({ mode: 'detach' });
+    // });
+    webviewokziyuan.addEventListener('console-message', e => {
+        // console.log('播放地址为: ' + e.message);
+        let url = e.message.split("|")[0];
+        let title = e.message.split("|")[1];
+        console.log(title + url);
+        if (url.indexOf(".m3u8") > 0) {
+            playVideo(url);
+            $("#vediotitle").text(title);
+        }
+    });
+    var videoplayer;
+    $(function () {
+        var options = {
+            techOrder: ["html5", "flash", "other supported tech"],
+            bigPlayButton: false,
+            textTrackDisplay: false,
+            posterImage: false,
+            errorDisplay: false,
+            control: {
+                captionsButton: false,
+                chaptersButton: false,
+                subtitlesButton: false,
+                liveDisplay: false,
+                playbackRateMenuButton: false
+            }
+        }
+        videoplayer = videojs('videoCon', options, function onPlayerReady() {
+            // videojs.log('播放器已经准备好了!');
+            // In this context, `this` is the player that was created by Video.js.<br>  // 注意，这个地方的上下文， `this` 指向的是Video.js的实例对像player
+            // this.src("http://youku.com-youku.com/20180317/LhrheHJk/index.m3u8");
+            // this.load();
+            // this.play();
+            videoplayer.volume(0.1);
+            // How about an event listener?<br>  // 如何使用事件监听？
+            this.on('ended', function () {
+                videojs.log('播放结束了!');
+            });
+            this.on('waiting', function () {
+                console.log('onwaiting执行成功!');
+                $("#videoMsg").show();
+            });
+            this.on('canplay', function () {
+                $("#videoMsg").hide();
+            });
+        });
+        document.addEventListener("fullscreenchange", function () {
+            console.log(document.fullscreen);
+            // fullscreenState.innerHTML = (document.fullscreen) ? "" : "not ";
+        }, false);
+        document.onkeyup = function (event) { //键盘事件
+            // console.log(video.volume.toFixed(1));
+            var e = event || window.event || arguments.callee.caller.arguments[0];
+            // console.log(e.keyCode);
+            if (e && e.keyCode == 13) { // 按enter键
+                // toggleFullScreen();
+                // document.getElementById('videoCon').requestFullScreen();
+                // document.requestFullscreen();
+                // videoplayer.enterFullScreen();
+            }
+            if (e && e.keyCode == 38) { // 按 向上键
+                if (videoplayer.volume().toFixed(1) < 1) {
+                    videoplayer.volume(videoplayer.volume() + 0.1);
+                }
+            }
+            if (e && e.keyCode == 40) { // 按 向下键
+                if (videoplayer.volume().toFixed(1) > 0) {
+                    videoplayer.volume(videoplayer.volume() - 0.1);
+                }
+            }
+            if (e && e.keyCode == 37) { // 按 向左键
+                videoplayer.currentTime(parseFloat(videoplayer.currentTime() - 30))
+            }
+            if (e && e.keyCode == 39) { // 按 向右键
+                videoplayer.currentTime(parseFloat(videoplayer.currentTime() + 30))
+            }
+        };
+        $('#videoCon').bind('mousewheel', function (event, delta) {
+            var dir = delta > 0 ? 'Up' : 'Down';
+            if (dir == 'Up') {
+                if (videoplayer.volume().toFixed(1) < 1) {
+                    videoplayer.volume(videoplayer.volume() + 0.1);
+                }
+            } else {
+                if (videoplayer.volume().toFixed(1) > 0) {
+                    videoplayer.volume(videoplayer.volume() - 0.1);
+                }
+            }
+        });
+    })
+    function playVideo(url) {
+        $('#myTab a[href="#home"]').tab('show');
+        videoplayer.src(encodeURI(url));
+        videoplayer.load();
+        // player.width(300).height(200);
+        videoplayer.play();
+    }
+    function pausePlay() {
+        videoplayer.pause();
+    }
+    function showRizhi() {
+        layx.iframe('localsite', '更新日志', 'rizhi.html', {
+            type: 'url',
+            useFrameTitle: true,
+            movable: false,
+            minMenu: false,
+            maxMenu: false,
+            // minWidth:50,
+            // minHeight:50,
+            // width:100,
+            dragInTopToMax: false,
+            event: {
+                onload: {
+                    after: function (layxWindow, winform) {
+                        layx.max(winform.id);
+                    }
+                }
+            }
+        });
+    }
 </script>
 </html>

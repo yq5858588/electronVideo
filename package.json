@@ -7,16 +7,43 @@
     "start": "electron .",
     "packager": "electron-packager . appName --platform=win32 --arch=x64 --electron-version=2.0.0 --out=out --overwrite",
     "pack": "electron-builder --dir",
+    "build-win": "electron-builder -w --ia32",
+    "build-all": "electron-builder -mwl",
     "dist": "electron-builder"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
-    "Electron",
-    "quick",
-    "start",
-    "tutorial",
-    "demo"
+    "Electron", "quick", "start", "tutorial", "demo"
   ],
+  "author": "杨庆 393978119",
+  "license": "CC0-1.0",
+  "dependencies": {
+    "art-template": "^4.10.2",
+    "cheerio": "^1.0.0-rc.2",
+    "ejs": "^2.6.1",
+    "getmac": "^5.20.0",
+    "koa": "^2.5.3",
+    "koa-art-template": "^1.1.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4",
+    "mongodb": "^3.1.6",
+    "mysql": "^2.16.0",
+    "request": "^2.88.0"
+  },
+  "devDependencies": {
+    "electron": "^19.0.0",
+    "electron-builder": "^21.2.0",
+    "ava": "^0.18.0",
+    "babel-cli": "^6.24.1",
+    "babel-preset-think-node": "^1.0.0",
+    "eslint": "^4.2.0",
+    "eslint-config-think": "^1.0.0",
+    "mongodb": "^3.0.6",
+    "node-notifier": "^5.0.2",
+    "nyc": "^7.0.0"
+  },
   "build": {
     "appId": "com.yq.video",
     "copyright": "杨庆",
@@ -33,34 +60,5 @@
     "win": {
       "icon": "res/icon.ico"
     }
-  },
-  "author": "杨庆",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "ava": "^0.18.0",
-    "babel-cli": "^6.24.1",
-    "babel-preset-think-node": "^1.0.0",
-    "eslint": "^4.2.0",
-    "eslint-config-think": "^1.0.0",
-    "mongodb": "^3.0.6",
-    "node-notifier": "^5.0.2",
-    "nyc": "^7.0.0"
-  },
-  "dependencies": {
-    "art-template": "^4.10.2",
-    "cheerio": "^1.0.0-rc.2",
-    "ejs": "^2.6.1",
-    "electron": "^8.0.2",
-    "electron-builder": "^21.2.0",
-    "getmac": "^1.4.6",
-    "koa": "^2.5.3",
-    "koa-art-template": "^1.1.1",
-    "koa-bodyparser": "^4.2.1",
-    "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0",
-    "koa-views": "^6.1.4",
-    "mongodb": "^3.1.6",
-    "mysql": "^2.16.0",
-    "request": "^2.88.0"
   }
 }
