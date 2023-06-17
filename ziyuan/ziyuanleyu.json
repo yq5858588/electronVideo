@@ -1,0 +1,117 @@
+{
+    "sites": [
+        {
+            "key": "非凡资源",
+            "name": "兔子┃非凡资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "http://cj.ffzyapi.com/api.php/provide/vod/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "feisuzyapi",
+            "name": "兔子┃飞速资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://www.feisuzyapi.com/api.php/provide/vod/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "天空云",
+            "name": "兔子┃天空云",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://api.tiankongapi.com/api.php/provide/vod/at/json/from/tkm3u8/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "快播云",
+            "name": "兔子┃快播云",
+            "type": 1,
+            "apitype": "json",
+            "api": "http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "速优",
+            "name": "兔子┃速优",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://cj.lziapi.com/api.php/provide/vod/from/lzm3u8/"
+        },
+        {
+            "key": "速腾",
+            "name": "兔子┃速腾",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://api.xinlangapi.com/xinlangapi.php/provide/vod/from/xlm3u8/"
+        },
+        {
+            "key": "百度资源",
+            "name": "兔子┃百度资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://api.apibdzy.com/api.php/provide/vod/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "乐鱼资源",
+            "name": "兔子┃乐鱼资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://api.ylzy1.com/api.php/provide/vod/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "酷点资源",
+            "name": "兔子┃酷点资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://api.kuapi.cc/api.php/provide/vod/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "樱花资源",
+            "name": "兔子┃樱花资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://m3u8.apiyhzy.com/api.php/provide/vod/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        },
+        {
+            "key": "闪电资源",
+            "name": "兔子┃闪电资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "http://sdzyapi.com/api.php/provide/vod/at/json/",
+            "searchable": 1,
+            "quickSearch": 1,
+            "filterable": 1,
+            "categories": []
+        }
+    ]
+}
