@@ -1,6 +1,6 @@
 const electron = require('electron');
-const { dialog } = require('electron');
-const { shell } = require('electron');
+const {dialog} = require('electron');
+const {shell} = require('electron');
 const ipc = electron.ipcMain;
 const globalShortcut = electron.globalShortcut
 // import { dialog }  from 'electron';
@@ -33,7 +33,7 @@ function createWindow() {
         icon: path.join(__dirname, '../res/icon.ico'),
         webPreferences: {
             plugins: true,
-            contextIsolation:false,
+            contextIsolation: false,
             nodeIntegration: true
         }
     })
@@ -68,7 +68,7 @@ function createWindow() {
                 shell.openExternal("https://gitee.com/yq5858588")
             }
         },
-        { label: '', type: 'separator' },
+        {label: '', type: 'separator'},
         {
             label: '退出',
             type: 'normal',
@@ -91,6 +91,8 @@ function createWindow() {
     // mainWindow.setTitle(macAddress);
     // Open the DevTools.
     // mainWindow.webContents.openDevTools()
+
+    mainWindow.webContents.openDevTools({mode: 'bottom'});
     //注册打开控制台的快捷键
     globalShortcut.register('F7', function () {
         let win = BrowserWindow.getFocusedWindow();
