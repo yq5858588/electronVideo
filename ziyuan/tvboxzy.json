@@ -8,46 +8,11 @@
             "api": "http://cj.ffzyapi.com/api.php/provide/vod/at/json/"
         },
         {
-            "key": "feisuzyapi",
-            "name": "兔子┃飞速资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://www.feisuzyapi.com/api.php/provide/vod/at/json/"
-        },
-        {
-            "key": "天空云",
-            "name": "兔子┃天空云",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://api.tiankongapi.com/api.php/provide/vod/at/json/from/tkm3u8/"
-        },
-        {
-            "key": "快播云",
-            "name": "兔子┃快播云",
-            "type": 1,
-            "apitype": "json",
-            "api": "http://www.kuaibozy.com/api.php/provide/vod/from/kbm3u8/at/json/"
-        },
-        {
             "key": "百度资源",
             "name": "兔子┃百度资源",
             "type": 1,
             "apitype": "json",
             "api": "https://api.apibdzy.com/api.php/provide/vod/at/json/"
-        },
-        {
-            "key": "乐鱼资源",
-            "name": "兔子┃乐鱼资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://api.ylzy1.com/api.php/provide/vod/at/json/"
-        },
-        {
-            "key": "酷点资源",
-            "name": "兔子┃酷点资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://api.kuapi.cc/api.php/provide/vod/at/json/"
         },
         {
             "key": "樱花资源",
@@ -71,32 +36,11 @@
             "api": "https://taopianapi.com/cjapi/mc10/vod/json.html"
         },
         {
-            "key": "量子资源",
-            "name": "兔子┃量子资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://cj.lziapi.com/api.php/providedown/vod/at/json/"
-        },
-        {
             "key": "金鹰资源",
             "name": "兔子┃金鹰资源",
             "type": 1,
             "apitype": "json",
             "api": "https://jyzyapi.com/provide/vod/at/json"
-        },
-        {
-            "key": "优质资源",
-            "name": "兔子┃优质资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://api.1080zyku.com/inc/api_mac10_all.php"
-        },
-        {
-            "key": "FOX资源",
-            "name": "兔子┃FOX资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://api.foxzyapi.com/api.php/provide/vod/at/json/"
         },
         {
             "key": "新浪资源",
@@ -120,13 +64,6 @@
             "api": "https://api.wujinapi.me/api.php/provide/vod/at/json/"
         },
         {
-            "key": "快车资源",
-            "name": "兔子┃快车资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://caiji.kczyapi.com/api.php/provide/vod/"
-        },
-        {
             "key": "光速资源",
             "name": "兔子┃光速资源",
             "type": 1,
@@ -135,24 +72,10 @@
         },
         {
             "key": "鸦片资源",
-            "name": "兔子┃鸦片资源原始连接失效",
+            "name": "兔子┃鸦片资源",
             "type": 1,
             "apitype": "json",
             "api": "https://api.yparse.com/api/json"
-        },
-        {
-            "key": "娱乐资源",
-            "name": "兔子┃娱乐资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://api.yulecj.com/api.php/provide/vod/at/jsonsea/"
-        },
-        {
-            "key": "爱坤资源",
-            "name": "兔子┃爱坤资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://ikunzyapi.com/api.php/seaxml/vod/at/json/"
         },
         {
             "key": "乐活影视",
@@ -160,13 +83,6 @@
             "type": 1,
             "apitype": "json",
             "api": "https://lehootv.com/api.php/provide/vod/at/json"
-        },
-        {
-            "key": "天堂资源",
-            "name": "兔子┃天堂资源原始连接失效",
-            "type": 1,
-            "apitype": "json",
-            "api": "http://vipmv.cc/api.php/provide/vod/at/json"
         },
         {
             "key": "森林资源",
@@ -181,13 +97,6 @@
             "type": 1,
             "apitype": "json",
             "api": "https://lbapi9.com/api.php/provide/vod/at/json/"
-        },
-        {
-            "key": "辣椒资源",
-            "name": "辣椒资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "http://api.11bat.com/api.php/provide/vod/at/json/"
         },
         {
             "key": "乐播扒皮资源",
