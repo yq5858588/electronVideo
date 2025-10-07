@@ -169,6 +169,13 @@
             "api": "http://vipmv.cc/api.php/provide/vod/at/json"
         },
         {
+            "key": "森林资源",
+            "name": "森林资源",
+            "type": 1,
+            "apitype": "json",
+            "api": "https://slapibf.com/api.php/provide/vod/at/json"
+        },
+        {
             "key": "乐播资源",
             "name": "乐播资源",
             "type": 1,
@@ -183,18 +190,11 @@
             "api": "http://api.11bat.com/api.php/provide/vod/at/json/"
         },
         {
-            "key": "扒皮资源",
-            "name": "扒皮资源",
+            "key": "乐播扒皮资源",
+            "name": "乐播扒皮资源",
             "type": 1,
             "apitype": "json",
             "api": "http://lbapiby.com/api.php/provide/vod/at/json/"
-        },
-        {
-            "key": "淘淘资源",
-            "name": "淘淘资源",
-            "type": 1,
-            "apitype": "json",
-            "api": "https://apittzy.com/api.php/provide/vod/at/json/"
         },
         {
             "key": "奥斯卡资源",
@@ -208,18 +208,6 @@
             "name": "美少女资源w",
             "type": 1,
             "api": "https://www.msnii.com/api/json.php"
-        },
-        {
-            "key": "黄瓜TV",
-            "name": "黄瓜TV",
-            "type": 1,
-            "api": "https://caiji10.com/home/cjapi/cfs6/mc10/vod/json"
-        },
-        {
-            "key": "丝袜资源",
-            "name": "丝袜资源",
-            "type": 1,
-            "api": "https://siwazyw.cc/api.php/provide/vod/at/json/"
         },
         {
             "key": "1淫水机资源",
@@ -246,46 +234,10 @@
             "api": "https://www.pgxdy.com/api/json.php"
         },
         {
-            "key": "奶茶资源",
-            "name": "w奶茶资源",
-            "type": 1,
-            "api": "https://caiji.naichaapi.com/inc/api.php"
-        },
-        {
-            "key": "色窝资源",
-            "name": "色窝资源",
-            "type": 1,
-            "api": "https://sewozyapi.com/api.php/provide/vod/at/json/"
-        },
-        {
-            "key": "秀色资源",
-            "name": "秀色资源",
-            "type": 1,
-            "api": "https://api.xiuseapi.com/api.php/provide/vod/at/json/"
-        },
-        {
             "key": "大地资源",
             "name": "大地资源w",
             "type": 1,
             "api": "https://dadiapi.com/api.php"
-        },
-        {
-            "key": "老鸭资源",
-            "name": "老鸭资源",
-            "type": 1,
-            "api": "https://api.apilyzy.com/api.php/provide/vod/at/json"
-        },
-        {
-            "key": "狼少年",
-            "name": "狼少年w",
-            "type": 1,
-            "api": "http://cjmygzy.com/inc/sapi.php?ac=videolist"
-        },
-        {
-            "key": "色色资源",
-            "name": "色色资源w",
-            "type": 1,
-            "api": "http://secj8.com/inc/sapi.php?ac=videolist"
         }
     ]
 }
